@@ -1,0 +1,1 @@
+C:\Users\Admin\source\repos\Extendroid\Extendroid.csproj;x64

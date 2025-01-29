@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Extendroid.ConnectNewDevice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Extendroid"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Connect New Device"
+
+    mc:Ignorable="d">
+
+    <TabView x:Name="DeviceTabView"
+				 Background="{StaticResource theme3}"
+                 TabWidthMode="Equal"
+                 IsAddTabButtonVisible="False">
+
+        <!-- WiFi Tab -->
+        <TabViewItem Header="WiFi" IsClosable="False">
+            <StackPanel Grid.Row="0" Background="{StaticResource theme5}" Height="2000">
+                <Grid Margin="20 10 20 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" >
+                        <TextBlock Text="Scan using Wireless Debugging menu"/>
+                        <StackPanel Background="{StaticResource theme1}">
+                            <Image x:Name="QR" Width="210" Height="210" Margin="10"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="20 0 0 0" >
+                        <TextBlock Text="or, Enter Pairing Code:"/>
+                        <TextBox x:Name="PairingCode" Width="Auto" TextChanged="PairingCode_TextChanged"  Margin="0 10 0 10"/>
+                        <Button x:Name="SubmitPairingCode" Click="OnPairingCodeSubmit">Connect</Button>
+                        <TextBlock x:Name="ConnectStatus" Text="Scanning..." Margin="0 100 0 0" Foreground="{StaticResource theme1}"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </TabViewItem>
+
+        <!-- USB Tab -->
+        <TabViewItem Header="USB" IsClosable="False">
+            <StackPanel Grid.Row="0" Background="{StaticResource theme5}" Height="2000">
+                <StackPanel Margin="20">
+                    <TextBlock Text="To connect via USB, enable 'USB Debugging' and allow the prompt on your device." FontSize="20" TextWrapping="Wrap"/>
+                </StackPanel>
+            </StackPanel>
+        </TabViewItem>
+    </TabView>
+</Window>

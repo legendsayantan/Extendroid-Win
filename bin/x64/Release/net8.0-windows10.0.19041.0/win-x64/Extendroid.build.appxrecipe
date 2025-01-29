@@ -1,0 +1,1179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>SAYANTAN-PC</Machine>
+    <WindowsUser>Admin</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>dea37720-8eb0-4dd0-b6c0-8bbafe6e3af8</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Admin</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
+    <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>C:\Users\Admin\source\repos\Extendroid\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Admin\source\repos\Extendroid\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\Extendroid.runtimeconfig.json">
+      <PackagePath>Extendroid.runtimeconfig.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Android.png">
+      <PackagePath>Assets\Android.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Connect.png">
+      <PackagePath>Assets\Connect.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Lock.png">
+      <PackagePath>Assets\Lock.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Other.png">
+      <PackagePath>Assets\Other.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Restart.png">
+      <PackagePath>Assets\Restart.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Settings.png">
+      <PackagePath>Assets\Settings.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Sync.png">
+      <PackagePath>Assets\Sync.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
+      <PackagePath>Extendroid.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
+      <PackagePath>runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\Microsoft.DiaSymReader.Native.amd64.dll">
+      <PackagePath>Microsoft.DiaSymReader.Native.amd64.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\System.IO.Compression.Native.dll">
+      <PackagePath>System.IO.Compression.Native.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\clretwrc.dll">
+      <PackagePath>clretwrc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\clrgc.dll">
+      <PackagePath>clrgc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\clrjit.dll">
+      <PackagePath>clrjit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\coreclr.dll">
+      <PackagePath>coreclr.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\createdump.exe">
+      <PackagePath>createdump.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\hostfxr.dll">
+      <PackagePath>hostfxr.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\hostpolicy.dll">
+      <PackagePath>hostpolicy.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\mscordaccore.dll">
+      <PackagePath>mscordaccore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\mscordaccore_amd64_amd64_8.0.1124.51707.dll">
+      <PackagePath>mscordaccore_amd64_amd64_8.0.1124.51707.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\mscordbi.dll">
+      <PackagePath>mscordbi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\mscorrc.dll">
+      <PackagePath>mscorrc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\msquic.dll">
+      <PackagePath>msquic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\D3DCompiler_47_cor3.dll">
+      <PackagePath>D3DCompiler_47_cor3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\PenImc_cor3.dll">
+      <PackagePath>PenImc_cor3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\PresentationNative_cor3.dll">
+      <PackagePath>PresentationNative_cor3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\vcruntime140_cor3.dll">
+      <PackagePath>vcruntime140_cor3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\native\wpfgfx_cor3.dll">
+      <PackagePath>wpfgfx_cor3.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>cs\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\PresentationCore.resources.dll">
+      <PackagePath>cs\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\PresentationFramework.resources.dll">
+      <PackagePath>cs\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\PresentationUI.resources.dll">
+      <PackagePath>cs\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\ReachFramework.resources.dll">
+      <PackagePath>cs\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>cs\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>cs\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>cs\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Windows.Forms.resources.dll">
+      <PackagePath>cs\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>cs\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\System.Xaml.resources.dll">
+      <PackagePath>cs\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\UIAutomationClient.resources.dll">
+      <PackagePath>cs\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>cs\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\UIAutomationProvider.resources.dll">
+      <PackagePath>cs\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\UIAutomationTypes.resources.dll">
+      <PackagePath>cs\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\WindowsBase.resources.dll">
+      <PackagePath>cs\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\cs\WindowsFormsIntegration.resources.dll">
+      <PackagePath>cs\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>de\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\PresentationCore.resources.dll">
+      <PackagePath>de\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\PresentationFramework.resources.dll">
+      <PackagePath>de\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\PresentationUI.resources.dll">
+      <PackagePath>de\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\ReachFramework.resources.dll">
+      <PackagePath>de\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>de\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>de\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>de\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Windows.Forms.resources.dll">
+      <PackagePath>de\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>de\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\System.Xaml.resources.dll">
+      <PackagePath>de\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\UIAutomationClient.resources.dll">
+      <PackagePath>de\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>de\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\UIAutomationProvider.resources.dll">
+      <PackagePath>de\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\UIAutomationTypes.resources.dll">
+      <PackagePath>de\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\WindowsBase.resources.dll">
+      <PackagePath>de\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\de\WindowsFormsIntegration.resources.dll">
+      <PackagePath>de\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>es\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\PresentationCore.resources.dll">
+      <PackagePath>es\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\PresentationFramework.resources.dll">
+      <PackagePath>es\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\PresentationUI.resources.dll">
+      <PackagePath>es\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\ReachFramework.resources.dll">
+      <PackagePath>es\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>es\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>es\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>es\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Windows.Forms.resources.dll">
+      <PackagePath>es\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>es\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\System.Xaml.resources.dll">
+      <PackagePath>es\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\UIAutomationClient.resources.dll">
+      <PackagePath>es\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>es\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\UIAutomationProvider.resources.dll">
+      <PackagePath>es\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\UIAutomationTypes.resources.dll">
+      <PackagePath>es\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\WindowsBase.resources.dll">
+      <PackagePath>es\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\es\WindowsFormsIntegration.resources.dll">
+      <PackagePath>es\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>fr\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\PresentationCore.resources.dll">
+      <PackagePath>fr\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\PresentationFramework.resources.dll">
+      <PackagePath>fr\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\PresentationUI.resources.dll">
+      <PackagePath>fr\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\ReachFramework.resources.dll">
+      <PackagePath>fr\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>fr\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>fr\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>fr\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Windows.Forms.resources.dll">
+      <PackagePath>fr\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>fr\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\System.Xaml.resources.dll">
+      <PackagePath>fr\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\UIAutomationClient.resources.dll">
+      <PackagePath>fr\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>fr\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\UIAutomationProvider.resources.dll">
+      <PackagePath>fr\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\UIAutomationTypes.resources.dll">
+      <PackagePath>fr\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\WindowsBase.resources.dll">
+      <PackagePath>fr\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\fr\WindowsFormsIntegration.resources.dll">
+      <PackagePath>fr\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>it\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\PresentationCore.resources.dll">
+      <PackagePath>it\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\PresentationFramework.resources.dll">
+      <PackagePath>it\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\PresentationUI.resources.dll">
+      <PackagePath>it\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\ReachFramework.resources.dll">
+      <PackagePath>it\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>it\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>it\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>it\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Windows.Forms.resources.dll">
+      <PackagePath>it\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>it\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\System.Xaml.resources.dll">
+      <PackagePath>it\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\UIAutomationClient.resources.dll">
+      <PackagePath>it\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>it\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\UIAutomationProvider.resources.dll">
+      <PackagePath>it\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\UIAutomationTypes.resources.dll">
+      <PackagePath>it\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\WindowsBase.resources.dll">
+      <PackagePath>it\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\it\WindowsFormsIntegration.resources.dll">
+      <PackagePath>it\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>ja\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\PresentationCore.resources.dll">
+      <PackagePath>ja\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\PresentationFramework.resources.dll">
+      <PackagePath>ja\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\PresentationUI.resources.dll">
+      <PackagePath>ja\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\ReachFramework.resources.dll">
+      <PackagePath>ja\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>ja\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>ja\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>ja\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Windows.Forms.resources.dll">
+      <PackagePath>ja\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>ja\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\System.Xaml.resources.dll">
+      <PackagePath>ja\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\UIAutomationClient.resources.dll">
+      <PackagePath>ja\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>ja\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\UIAutomationProvider.resources.dll">
+      <PackagePath>ja\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\UIAutomationTypes.resources.dll">
+      <PackagePath>ja\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\WindowsBase.resources.dll">
+      <PackagePath>ja\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ja\WindowsFormsIntegration.resources.dll">
+      <PackagePath>ja\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>ko\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\PresentationCore.resources.dll">
+      <PackagePath>ko\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\PresentationFramework.resources.dll">
+      <PackagePath>ko\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\PresentationUI.resources.dll">
+      <PackagePath>ko\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\ReachFramework.resources.dll">
+      <PackagePath>ko\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>ko\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>ko\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>ko\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Windows.Forms.resources.dll">
+      <PackagePath>ko\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>ko\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\System.Xaml.resources.dll">
+      <PackagePath>ko\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\UIAutomationClient.resources.dll">
+      <PackagePath>ko\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>ko\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\UIAutomationProvider.resources.dll">
+      <PackagePath>ko\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\UIAutomationTypes.resources.dll">
+      <PackagePath>ko\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\WindowsBase.resources.dll">
+      <PackagePath>ko\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ko\WindowsFormsIntegration.resources.dll">
+      <PackagePath>ko\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>pl\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\PresentationCore.resources.dll">
+      <PackagePath>pl\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\PresentationFramework.resources.dll">
+      <PackagePath>pl\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\PresentationUI.resources.dll">
+      <PackagePath>pl\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\ReachFramework.resources.dll">
+      <PackagePath>pl\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>pl\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>pl\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>pl\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Windows.Forms.resources.dll">
+      <PackagePath>pl\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>pl\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\System.Xaml.resources.dll">
+      <PackagePath>pl\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\UIAutomationClient.resources.dll">
+      <PackagePath>pl\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>pl\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\UIAutomationProvider.resources.dll">
+      <PackagePath>pl\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\UIAutomationTypes.resources.dll">
+      <PackagePath>pl\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\WindowsBase.resources.dll">
+      <PackagePath>pl\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pl\WindowsFormsIntegration.resources.dll">
+      <PackagePath>pl\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>pt-BR\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\PresentationCore.resources.dll">
+      <PackagePath>pt-BR\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\PresentationFramework.resources.dll">
+      <PackagePath>pt-BR\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\PresentationUI.resources.dll">
+      <PackagePath>pt-BR\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\ReachFramework.resources.dll">
+      <PackagePath>pt-BR\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>pt-BR\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>pt-BR\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>pt-BR\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Windows.Forms.resources.dll">
+      <PackagePath>pt-BR\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>pt-BR\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\System.Xaml.resources.dll">
+      <PackagePath>pt-BR\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\UIAutomationClient.resources.dll">
+      <PackagePath>pt-BR\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>pt-BR\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\UIAutomationProvider.resources.dll">
+      <PackagePath>pt-BR\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\UIAutomationTypes.resources.dll">
+      <PackagePath>pt-BR\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\WindowsBase.resources.dll">
+      <PackagePath>pt-BR\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\pt-BR\WindowsFormsIntegration.resources.dll">
+      <PackagePath>pt-BR\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>ru\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\PresentationCore.resources.dll">
+      <PackagePath>ru\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\PresentationFramework.resources.dll">
+      <PackagePath>ru\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\PresentationUI.resources.dll">
+      <PackagePath>ru\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\ReachFramework.resources.dll">
+      <PackagePath>ru\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>ru\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>ru\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>ru\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Windows.Forms.resources.dll">
+      <PackagePath>ru\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>ru\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\System.Xaml.resources.dll">
+      <PackagePath>ru\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\UIAutomationClient.resources.dll">
+      <PackagePath>ru\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>ru\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\UIAutomationProvider.resources.dll">
+      <PackagePath>ru\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\UIAutomationTypes.resources.dll">
+      <PackagePath>ru\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\WindowsBase.resources.dll">
+      <PackagePath>ru\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\ru\WindowsFormsIntegration.resources.dll">
+      <PackagePath>ru\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>tr\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\PresentationCore.resources.dll">
+      <PackagePath>tr\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\PresentationFramework.resources.dll">
+      <PackagePath>tr\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\PresentationUI.resources.dll">
+      <PackagePath>tr\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\ReachFramework.resources.dll">
+      <PackagePath>tr\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>tr\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>tr\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>tr\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Windows.Forms.resources.dll">
+      <PackagePath>tr\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>tr\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\System.Xaml.resources.dll">
+      <PackagePath>tr\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\UIAutomationClient.resources.dll">
+      <PackagePath>tr\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>tr\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\UIAutomationProvider.resources.dll">
+      <PackagePath>tr\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\UIAutomationTypes.resources.dll">
+      <PackagePath>tr\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\WindowsBase.resources.dll">
+      <PackagePath>tr\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\tr\WindowsFormsIntegration.resources.dll">
+      <PackagePath>tr\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>zh-Hans\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\PresentationCore.resources.dll">
+      <PackagePath>zh-Hans\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\PresentationFramework.resources.dll">
+      <PackagePath>zh-Hans\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\PresentationUI.resources.dll">
+      <PackagePath>zh-Hans\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\ReachFramework.resources.dll">
+      <PackagePath>zh-Hans\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Windows.Forms.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>zh-Hans\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\System.Xaml.resources.dll">
+      <PackagePath>zh-Hans\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\UIAutomationClient.resources.dll">
+      <PackagePath>zh-Hans\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>zh-Hans\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\UIAutomationProvider.resources.dll">
+      <PackagePath>zh-Hans\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\UIAutomationTypes.resources.dll">
+      <PackagePath>zh-Hans\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\WindowsBase.resources.dll">
+      <PackagePath>zh-Hans\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hans\WindowsFormsIntegration.resources.dll">
+      <PackagePath>zh-Hans\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\Microsoft.VisualBasic.Forms.resources.dll">
+      <PackagePath>zh-Hant\Microsoft.VisualBasic.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\PresentationCore.resources.dll">
+      <PackagePath>zh-Hant\PresentationCore.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\PresentationFramework.resources.dll">
+      <PackagePath>zh-Hant\PresentationFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\PresentationUI.resources.dll">
+      <PackagePath>zh-Hant\PresentationUI.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\ReachFramework.resources.dll">
+      <PackagePath>zh-Hant\ReachFramework.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Windows.Controls.Ribbon.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Controls.Ribbon.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Windows.Forms.Design.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Forms.Design.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Windows.Forms.Primitives.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Forms.Primitives.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Windows.Forms.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Forms.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Windows.Input.Manipulations.resources.dll">
+      <PackagePath>zh-Hant\System.Windows.Input.Manipulations.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\System.Xaml.resources.dll">
+      <PackagePath>zh-Hant\System.Xaml.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\UIAutomationClient.resources.dll">
+      <PackagePath>zh-Hant\UIAutomationClient.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\UIAutomationClientSideProviders.resources.dll">
+      <PackagePath>zh-Hant\UIAutomationClientSideProviders.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\UIAutomationProvider.resources.dll">
+      <PackagePath>zh-Hant\UIAutomationProvider.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\UIAutomationTypes.resources.dll">
+      <PackagePath>zh-Hant\UIAutomationTypes.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\WindowsBase.resources.dll">
+      <PackagePath>zh-Hant\WindowsBase.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsdesktop.app.runtime.win-x64\8.0.11\runtimes\win-x64\lib\net8.0\zh-Hant\WindowsFormsIntegration.resources.dll">
+      <PackagePath>zh-Hant\WindowsFormsIntegration.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
+      <PackagePath>WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
+      <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\Microsoft.Win32.Primitives.dll">
+      <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Diagnostics.Debug.dll">
+      <PackagePath>System.Diagnostics.Debug.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Runtime.Extensions.dll">
+      <PackagePath>System.Runtime.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Runtime.dll">
+      <PackagePath>System.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Threading.Thread.dll">
+      <PackagePath>System.Threading.Thread.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.dll">
+      <PackagePath>System.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\mscorlib.dll">
+      <PackagePath>mscorlib.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\netstandard.dll">
+      <PackagePath>netstandard.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\Accessibility.dll">
+      <PackagePath>Accessibility.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\DirectWriteForwarder.dll">
+      <PackagePath>DirectWriteForwarder.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Design.dll">
+      <PackagePath>System.Design.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Drawing.Design.dll">
+      <PackagePath>System.Drawing.Design.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Drawing.dll">
+      <PackagePath>System.Drawing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Printing.dll">
+      <PackagePath>System.Printing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\AdvancedSharpAdbClient.dll">
+      <PackagePath>AdvancedSharpAdbClient.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.InteractiveExperiences.Projection.dll">
+      <PackagePath>Microsoft.InteractiveExperiences.Projection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.WinUI.dll">
+      <PackagePath>Microsoft.WinUI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\QRCoder.dll">
+      <PackagePath>QRCoder.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Reactive.dll">
+      <PackagePath>System.Reactive.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Zeroconf.dll">
+      <PackagePath>Zeroconf.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Web.WebView2.Core.Projection.dll">
+      <PackagePath>Microsoft.Web.WebView2.Core.Projection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Extendroid.dll">
+      <PackagePath>Extendroid.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Win32.Registry.dll">
+      <PackagePath>Microsoft.Win32.Registry.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Concurrent.dll">
+      <PackagePath>System.Collections.Concurrent.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Immutable.dll">
+      <PackagePath>System.Collections.Immutable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.NonGeneric.dll">
+      <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Specialized.dll">
+      <PackagePath>System.Collections.Specialized.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.dll">
+      <PackagePath>System.Collections.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.EventBasedAsync.dll">
+      <PackagePath>System.ComponentModel.EventBasedAsync.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.Primitives.dll">
+      <PackagePath>System.ComponentModel.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.TypeConverter.dll">
+      <PackagePath>System.ComponentModel.TypeConverter.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.dll">
+      <PackagePath>System.ComponentModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Console.dll">
+      <PackagePath>System.Console.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.DiagnosticSource.dll">
+      <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.FileVersionInfo.dll">
+      <PackagePath>System.Diagnostics.FileVersionInfo.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.Process.dll">
+      <PackagePath>System.Diagnostics.Process.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.StackTrace.dll">
+      <PackagePath>System.Diagnostics.StackTrace.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.TraceSource.dll">
+      <PackagePath>System.Diagnostics.TraceSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Drawing.Primitives.dll">
+      <PackagePath>System.Drawing.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Formats.Asn1.dll">
+      <PackagePath>System.Formats.Asn1.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Compression.Brotli.dll">
+      <PackagePath>System.IO.Compression.Brotli.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Compression.dll">
+      <PackagePath>System.IO.Compression.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.FileSystem.AccessControl.dll">
+      <PackagePath>System.IO.FileSystem.AccessControl.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.IsolatedStorage.dll">
+      <PackagePath>System.IO.IsolatedStorage.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.MemoryMappedFiles.dll">
+      <PackagePath>System.IO.MemoryMappedFiles.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.Expressions.dll">
+      <PackagePath>System.Linq.Expressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.dll">
+      <PackagePath>System.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Http.dll">
+      <PackagePath>System.Net.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NameResolution.dll">
+      <PackagePath>System.Net.NameResolution.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NetworkInformation.dll">
+      <PackagePath>System.Net.NetworkInformation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Primitives.dll">
+      <PackagePath>System.Net.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Quic.dll">
+      <PackagePath>System.Net.Quic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Requests.dll">
+      <PackagePath>System.Net.Requests.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Security.dll">
+      <PackagePath>System.Net.Security.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.ServicePoint.dll">
+      <PackagePath>System.Net.ServicePoint.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Sockets.dll">
+      <PackagePath>System.Net.Sockets.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.WebClient.dll">
+      <PackagePath>System.Net.WebClient.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.WebHeaderCollection.dll">
+      <PackagePath>System.Net.WebHeaderCollection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ObjectModel.dll">
+      <PackagePath>System.ObjectModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.CoreLib.dll">
+      <PackagePath>System.Private.CoreLib.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.Uri.dll">
+      <PackagePath>System.Private.Uri.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.Xml.dll">
+      <PackagePath>System.Private.Xml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Reflection.Metadata.dll">
+      <PackagePath>System.Reflection.Metadata.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.CompilerServices.VisualC.dll">
+      <PackagePath>System.Runtime.CompilerServices.VisualC.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.InteropServices.dll">
+      <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.Numerics.dll">
+      <PackagePath>System.Runtime.Numerics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.Serialization.Formatters.dll">
+      <PackagePath>System.Runtime.Serialization.Formatters.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.AccessControl.dll">
+      <PackagePath>System.Security.AccessControl.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Claims.dll">
+      <PackagePath>System.Security.Claims.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Cryptography.dll">
+      <PackagePath>System.Security.Cryptography.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Principal.Windows.dll">
+      <PackagePath>System.Security.Principal.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Text.Encoding.CodePages.dll">
+      <PackagePath>System.Text.Encoding.CodePages.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Text.RegularExpressions.dll">
+      <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.Channels.dll">
+      <PackagePath>System.Threading.Channels.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.dll">
+      <PackagePath>System.Threading.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Win32.SystemEvents.dll">
+      <PackagePath>Microsoft.Win32.SystemEvents.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\PresentationCore.dll">
+      <PackagePath>PresentationCore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\PresentationFramework.dll">
+      <PackagePath>PresentationFramework.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\PresentationUI.dll">
+      <PackagePath>PresentationUI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\ReachFramework.dll">
+      <PackagePath>ReachFramework.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Configuration.ConfigurationManager.dll">
+      <PackagePath>System.Configuration.ConfigurationManager.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.EventLog.dll">
+      <PackagePath>System.Diagnostics.EventLog.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Drawing.Common.dll">
+      <PackagePath>System.Drawing.Common.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Packaging.dll">
+      <PackagePath>System.IO.Packaging.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Windows.Extensions.dll">
+      <PackagePath>System.Windows.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Windows.Forms.Design.dll">
+      <PackagePath>System.Windows.Forms.Design.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Windows.Forms.Primitives.dll">
+      <PackagePath>System.Windows.Forms.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Windows.Forms.dll">
+      <PackagePath>System.Windows.Forms.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Windows.Input.Manipulations.dll">
+      <PackagePath>System.Windows.Input.Manipulations.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Xaml.dll">
+      <PackagePath>System.Xaml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\UIAutomationProvider.dll">
+      <PackagePath>UIAutomationProvider.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\UIAutomationTypes.dll">
+      <PackagePath>UIAutomationTypes.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\WindowsBase.dll">
+      <PackagePath>WindowsBase.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Windows.SDK.NET.dll">
+      <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\WinRT.Runtime.dll">
+      <PackagePath>WinRT.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\Extendroid.deps.json">
+      <PackagePath>Extendroid.deps.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\adb.exe">
+      <PackagePath>Assets\scrcpy\adb.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\AdbWinApi.dll">
+      <PackagePath>Assets\scrcpy\AdbWinApi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\AdbWinUsbApi.dll">
+      <PackagePath>Assets\scrcpy\AdbWinUsbApi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\avcodec-61.dll">
+      <PackagePath>Assets\scrcpy\avcodec-61.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\avformat-61.dll">
+      <PackagePath>Assets\scrcpy\avformat-61.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\avutil-59.dll">
+      <PackagePath>Assets\scrcpy\avutil-59.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\icon.png">
+      <PackagePath>Assets\scrcpy\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\libusb-1.0.dll">
+      <PackagePath>Assets\scrcpy\libusb-1.0.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\open_a_terminal_here.bat">
+      <PackagePath>Assets\scrcpy\open_a_terminal_here.bat</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\scrcpy-console.bat">
+      <PackagePath>Assets\scrcpy\scrcpy-console.bat</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\scrcpy-noconsole.vbs">
+      <PackagePath>Assets\scrcpy\scrcpy-noconsole.vbs</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\scrcpy-server">
+      <PackagePath>Assets\scrcpy\scrcpy-server</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\scrcpy.exe">
+      <PackagePath>Assets\scrcpy\scrcpy.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\SDL2.dll">
+      <PackagePath>Assets\scrcpy\SDL2.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\scrcpy\swresample-5.dll">
+      <PackagePath>Assets\scrcpy\swresample-5.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Admin\source\repos\Extendroid\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.6.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.6</Name>
+      <Version>6000.373.1641.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.6, MinVersion = 6000.373.1641.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.6.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.6.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.6</Name>
+      <Version>6000.373.1641.0</Version>
+      <Architecture>win32</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.6, MinVersion = 6000.373.1641.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.6.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.6.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.6</Name>
+      <Version>6000.373.1641.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.6, MinVersion = 6000.373.1641.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.6.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.6.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.6</Name>
+      <Version>6000.373.1641.0</Version>
+      <Architecture>arm64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.6, MinVersion = 6000.373.1641.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Admin\.nuget\packages\microsoft.windowsappsdk\1.6.250108002\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.6.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

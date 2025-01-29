@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Extendroid (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Extendroid (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

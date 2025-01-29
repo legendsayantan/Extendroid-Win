@@ -1,0 +1,382 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.UI.Input;
+using System.Threading.Tasks;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.Storage;
+using System.Threading;
+using Extendroid.Lib;
+using AdvancedSharpAdbClient;
+using System.Windows.Controls;
+using ListViewItem = Microsoft.UI.Xaml.Controls.ListViewItem;
+using Button = Microsoft.UI.Xaml.Controls.Button;
+using SelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs;
+using System.Text;
+using System.Collections.ObjectModel;
+using StackPanel = Microsoft.UI.Xaml.Controls.StackPanel;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
+
+namespace Extendroid
+{
+    /// <summary>
+    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class MainWindow : Window
+    {
+        private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        private StorageFolder localDir = ApplicationData.Current.LocalFolder;
+        private StorageFolder scrcpyPath = null;
+        Thread tickThread;
+        AdbManager adbManager;
+        IEnumerable<AdvancedSharpAdbClient.Models.DeviceData> devices;
+        Boolean loading = false;
+        private InputCursor? OriginalInputCursor { get; set; }
+
+
+        public MainWindow()
+        {
+            this.InitializeComponent();
+            this.Closed += MainWindow_Closed;
+            InitializeAsync();
+            adbManager = new AdbManager();
+            //Refresh connected devices periodically
+            tickThread = new Thread(new ThreadStart(OnTick));
+            tickThread.Start();
+
+        }
+
+        private async Task InitializeAsync()
+        {
+            scrcpyPath = await localDir.CreateFolderAsync("scrcpy", CreationCollisionOption.OpenIfExists);
+            try {
+                await scrcpyPath.GetFileAsync("scrcpy.exe");
+            }
+            catch (FileNotFoundException e)
+            {
+                string scrcpyFolder = Path.Combine(AppContext.BaseDirectory, "Assets\\scrcpy");
+                string[] files = Directory.GetFiles(scrcpyFolder);
+                foreach (string file in files)
+                {
+                    string destPath = Path.Combine(scrcpyPath.Path, Path.GetFileName(file));
+                    File.Copy(file, destPath, true);
+                }
+            }
+        }
+
+        private void MainWindow_Closed(object sender, WindowEventArgs args)
+        {
+            Application.Current.Exit();
+        }
+
+        private void OnTick()
+        {
+            Boolean run = true;
+            int count = 0;
+            while (run && AdbServer.Instance.GetStatus().IsRunning)
+            {
+                count++;
+                devices = AdbManager.adbClient.GetDevices().Where(d => d.State == AdvancedSharpAdbClient.Models.DeviceState.Online);
+                var devicenames = devices.Select(s => s.Name + " " + s.Serial);
+                try
+                {
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        foreach (var device in devicenames)
+                        {
+                            var listItems = DeviceList.Items;
+                            if (!listItems.Any(a => ((Microsoft.UI.Xaml.Controls.ListViewItem)a).Content.ToString() == device))
+                            {
+                                ListViewItem item = new();
+                                item.Content = device;
+                                var brush = new SolidColorBrush((Windows.UI.Color)Application.Current.Resources["theme5"]);
+                                item.Foreground = brush;
+                                item.Resources["ListViewItemForegroundPointerOver"] = brush;
+                                item.Resources["ListViewItemForegroundSelected"] = new SolidColorBrush((Windows.UI.Color)Application.Current.Resources["theme4"]);
+                                DeviceList.Items.Add(item);
+                                Console.WriteLine(DeviceList.Items.ToString());
+                            }
+                        }
+                        foreach (var device in DeviceList.Items)
+                        {
+                            if (!devicenames.Any(d => d.Equals((device as ListViewItem).Content))) DeviceList.Items.Remove(device);
+                        }
+                    });
+                }
+                catch (System.NullReferenceException e) { }
+                if (count == 3)
+                {
+                    count = 0;
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        var device = ActiveDevice();
+                        if (device != null) ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)device);
+                    });
+
+                }
+                Thread.Sleep(5000);
+                try
+                {
+                    if (!this.Visible) run = false;
+                }
+                catch (Exception e) { }
+            }
+        }
+
+        
+
+        private AdvancedSharpAdbClient.Models.DeviceData? ActiveDevice()
+        {
+            var item = (ListViewItem)DeviceList.SelectedItem;
+            if (item == null) return null;
+            var splits = item.Content.ToString().Split(" ");
+            return devices.First(d => d.Name == splits[0] && d.Serial == splits[1]);
+        }
+
+        private async Task ReloadApps(AdvancedSharpAdbClient.Models.DeviceData device, int delay = 0)
+        {
+            if (loading) return;
+            loading = true;
+
+            try
+            {
+                await Task.Delay(delay);
+
+                using var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = Path.Combine(scrcpyPath.Path, "scrcpy.exe"),
+                        Arguments = $"-s {device.Serial} --list-apps",
+                        WorkingDirectory = scrcpyPath.Path,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                        StandardOutputEncoding = Encoding.UTF8,
+                        StandardErrorEncoding = Encoding.UTF8
+                    }
+                };
+
+                var output = new StringBuilder();
+                var error = new StringBuilder();
+
+                process.OutputDataReceived += (s, e) => AppendSafe(output, e.Data);
+                process.ErrorDataReceived += (s, e) => AppendSafe(error, e.Data);
+
+                process.Start();
+
+                // Begin async reading immediately
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+
+                // Wait for process exit AND all output received
+                await process.WaitForExitAsync().ConfigureAwait(false);
+
+                // Wait an additional moment for final output
+                await Task.Delay(100);
+
+                if (process.ExitCode != 0)
+                {
+                    throw new Exception($"Process failed (exit code {process.ExitCode}): {error}");
+                }
+
+                // Combine both streams since scrcpy mixes output
+                HandleScrcpyOutput(output.ToString());
+            }catch(Exception ex)
+            {
+                Console.Error.WriteLine(ex.Message);
+            }finally
+            {
+                loading = false;
+            }
+        }
+
+        private static void AppendSafe(StringBuilder builder, string? data)
+        {
+            if (!string.IsNullOrEmpty(data))
+            {
+                lock (builder)
+                {
+                    builder.AppendLine(data);
+                }
+            }
+        }
+
+        private void HandleScrcpyOutput(string output)
+        {
+            
+            var lines = output.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            List<AppItem> apps = new List<AppItem>();
+            foreach (var line in lines)
+            {
+                // Skip non-app lines
+                if (!line.StartsWith(" * ") && !line.StartsWith(" - ")) continue;
+
+                var parts = line.Substring(2).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2) continue;
+
+                // Combine app name (might contain spaces)
+                var appName = string.Join(" ", parts.Take(parts.Length - 1));
+                var packageId = parts.Last();
+
+                apps.Add(new AppItem
+                {
+                    Name = appName,
+                    ID = packageId,
+                    Info = line.StartsWith(" * ") ? "System" : "Installed"
+                });
+            }
+
+            // Update UI
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                try
+                {
+                    if (!DispatcherQueue.HasThreadAccess)
+                    {
+                        Console.Error.WriteLine("Not on UI Thread!");
+                    }
+                    if (AllGridRepeater != null && apps != null)
+                    {
+                        AllGridRepeater.ItemsSource = apps;
+                    }
+                    else
+                    {
+                        Debug.WriteLine("UI elements not ready");
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.Error.WriteLine(e);
+                }
+            });
+        }
+
+        private void OnConnectBtnClick(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            ConnectNewDevice connectNewDevice = new ConnectNewDevice(() => {
+                //RestartApp();
+            });
+            connectNewDevice.Activate();
+        }
+
+        private async void OnRestartBtnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void OnSettingsBtnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private async void OnDeviceSelected(object sender, SelectionChangedEventArgs e)
+        {
+            await ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
+        }
+
+        private async void OnAndroidBtnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void OnLockBtnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private async void OnReloadBtnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnActiveGridItemClick(object sender, PointerRoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnAppGridItemClick(object sender, PointerRoutedEventArgs e)
+        {
+            
+        }
+
+        private async void OnKillActiveItemClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnPointerEnter(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is StackPanel stackPanel)
+            {
+                OriginalInputCursor = GetCursor(stackPanel) ?? InputSystemCursor.Create(InputSystemCursorShape.Arrow);
+                ChangeCursor(stackPanel, InputSystemCursor.Create(InputSystemCursorShape.Hand));
+            }
+        }
+        private void OnPointerExit(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is StackPanel stackPanel)
+            {
+                if (OriginalInputCursor != null)
+                {
+                    ChangeCursor(stackPanel, OriginalInputCursor);
+                }
+            }
+        }
+        public static InputCursor GetCursor(UIElement element)
+        {
+            // Get the type of the UIElement
+            Type elementType = element.GetType();
+
+            // Get the field info for the ProtectedCursor
+            PropertyInfo protectedCursorField = elementType.GetProperty("ProtectedCursor", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty | BindingFlags.Instance);
+
+            if (protectedCursorField == null)
+            {
+                throw new InvalidOperationException("ProtectedCursor field not found.");
+            }
+
+            // Get the value of the ProtectedCursor
+            return (InputCursor)protectedCursorField.GetValue(element);
+        }
+        public static void ChangeCursor(UIElement uiElement, InputCursor cursor)
+        {
+            Type type = typeof(UIElement);
+            type.InvokeMember("ProtectedCursor", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty | BindingFlags.Instance, null, uiElement, new object[] { cursor });
+        }
+        public static void RestartApp()
+        {
+            // Get the current process
+            var currentProcess = Process.GetCurrentProcess();
+
+            // Start a new instance of the application
+            Process.Start(currentProcess.MainModule.FileName);
+
+            // Close the current instance
+            Application.Current.Exit();
+        }
+
+    }
+
+    public class AppItem
+    {
+        public string Name { get; set; }
+        public string ID { get; set; }
+        public string Info { get; set; }
+    }
+}
