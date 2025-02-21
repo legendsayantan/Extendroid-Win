@@ -32,6 +32,7 @@ namespace Extendroid
         /// </summary>
         public App()
         {
+            Console.WriteLine("App()");
             this.InitializeComponent();
         }
 
@@ -41,6 +42,7 @@ namespace Extendroid
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            Console.WriteLine("OnLaunched()");
             m_window = new MainWindow();
             m_window.Activate();
         }

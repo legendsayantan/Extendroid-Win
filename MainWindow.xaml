@@ -62,7 +62,7 @@
                     </Button.Resources>
                 </Button>
             </Grid>
-            <ListView Name="DeviceList" Foreground="{StaticResource theme5}" SelectionChanged="OnDeviceSelected"/>
+            <ListView x:Name="DeviceList" Foreground="{StaticResource theme5}" SelectionChanged="OnDeviceSelected"/>
         </StackPanel>
 
         <!-- right side -->
@@ -127,18 +127,8 @@
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0" PointerPressed="OnActiveGridItemClick">
                                                 <TextBlock x:Name="text" Text="{x:Bind Name}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource theme1}"/>
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock Grid.Column="0" Text="Window ID" FontSize="12" Foreground="{StaticResource theme2}" />
-                                                    <TextBlock Grid.Column="1" Text="{x:Bind ID}" FontSize="12" Margin="3 0 0 0" Foreground="{StaticResource theme2}"/>
-                                                    <TextBlock Grid.Column="2" Text=","  FontSize="12" Foreground="{StaticResource theme2}"/>
-                                                    <TextBlock Grid.Column="3" Text="{x:Bind Info}" FontSize="12" TextWrapping="Wrap" Margin="3 0 0 0" Foreground="{StaticResource theme2}"/>
-                                                </Grid>
+                                                <TextBlock Grid.Column="1" Text="{x:Bind ID}" Width="0" Height="0"/>
+                                                <TextBlock Grid.Column="1" Text="{x:Bind Info}" FontSize="12" Margin="0" Foreground="{StaticResource theme2}"/>
                                             </StackPanel>
                                             <Button Grid.Column="1" Foreground="{StaticResource white}" Click="OnKillActiveItemClick">
                                                 X
@@ -158,6 +148,24 @@
                         </ItemsRepeater.ItemTemplate>
                     </ItemsRepeater>
                 </Grid>
+                <TextBlock Text="System Apps" Foreground="{StaticResource theme1}" Margin="5 10 0 0"/>
+                <Grid Name="SystemList">
+                    <ItemsRepeater x:Name="SystemGridRepeater" >
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MinItemWidth="225" MinItemHeight="65" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="local:AppItem">
+                                <Border  Margin="5" Padding="10 10 5 10" BorderBrush="{StaticResource theme3}" BorderThickness="2" CornerRadius="10">
+                                    <StackPanel VerticalAlignment="Center" PointerPressed="OnSystemAppGridItemClick" PointerEntered="OnPointerEnter" PointerExited="OnPointerExit">
+                                        <TextBlock Text="{x:Bind Name}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource theme1}" />
+                                        <TextBlock Text="{x:Bind ID}" FontSize="12" Foreground="{StaticResource theme2}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </Grid>
                 <TextBlock Text="Installed Apps" Foreground="{StaticResource theme1}" Margin="5 10 0 0"/>
                 <Grid Name="AppList">
                     <ItemsRepeater x:Name="AllGridRepeater" >
@@ -167,7 +175,7 @@
                         <ItemsRepeater.ItemTemplate>
                             <DataTemplate x:DataType="local:AppItem">
                                 <Border  Margin="5" Padding="10 10 5 10" BorderBrush="{StaticResource theme3}" BorderThickness="2" CornerRadius="10">
-                                    <StackPanel VerticalAlignment="Center" PointerPressed="OnAppGridItemClick" PointerEntered="OnPointerEnter" PointerExited="OnPointerExit">
+                                    <StackPanel VerticalAlignment="Center" PointerPressed="OnInstalledAppGridItemClick" PointerEntered="OnPointerEnter" PointerExited="OnPointerExit">
                                         <TextBlock Text="{x:Bind Name}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource theme1}" />
                                         <TextBlock Text="{x:Bind ID}" FontSize="12" Foreground="{StaticResource theme2}"/>
                                     </StackPanel>

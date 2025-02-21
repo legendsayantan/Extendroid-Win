@@ -27,6 +27,8 @@ using SelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.SelectionChangedEve
 using System.Text;
 using System.Collections.ObjectModel;
 using StackPanel = Microsoft.UI.Xaml.Controls.StackPanel;
+using TextBlock = Microsoft.UI.Xaml.Controls.TextBlock;
+using Grid = Microsoft.UI.Xaml.Controls.Grid;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -43,10 +45,14 @@ namespace Extendroid
         private StorageFolder scrcpyPath = null;
         Thread tickThread;
         AdbManager adbManager;
+        SessionManager sessionManager;
         IEnumerable<AdvancedSharpAdbClient.Models.DeviceData> devices;
         Boolean loading = false;
         private InputCursor? OriginalInputCursor { get; set; }
 
+        List<AppItem> installedApps = new List<AppItem>();
+        List<AppItem> systemApps = new List<AppItem>();
+        List<AppItem> windows = new List<AppItem>();
 
         public MainWindow()
         {
@@ -54,6 +60,7 @@ namespace Extendroid
             this.Closed += MainWindow_Closed;
             InitializeAsync();
             adbManager = new AdbManager();
+            sessionManager = new SessionManager();
             //Refresh connected devices periodically
             tickThread = new Thread(new ThreadStart(OnTick));
             tickThread.Start();
@@ -78,8 +85,12 @@ namespace Extendroid
             }
         }
 
-        private void MainWindow_Closed(object sender, WindowEventArgs args)
+        private async void MainWindow_Closed(object sender, WindowEventArgs args)
         {
+            foreach(var item in sessionManager.GetProcesses().Keys)
+            {
+                await sessionManager.RequestTermination(item);
+            }
             Application.Current.Exit();
         }
 
@@ -118,17 +129,30 @@ namespace Extendroid
                     });
                 }
                 catch (System.NullReferenceException e) { }
+                if(count% 2 == 0)
+                {
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                        var device = ActiveDevice();
+                        if (device != null)
+                        {
+                            ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)device);
+                        }
+                    });
+                }
                 if (count == 3)
                 {
                     count = 0;
                     DispatcherQueue.TryEnqueue(() =>
                     {
                         var device = ActiveDevice();
-                        if (device != null) ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)device);
+                        if (device != null){ 
+                            ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)device); 
+                        }
                     });
 
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
                 try
                 {
                     if (!this.Visible) run = false;
@@ -145,6 +169,46 @@ namespace Extendroid
             if (item == null) return null;
             var splits = item.Content.ToString().Split(" ");
             return devices.First(d => d.Name == splits[0] && d.Serial == splits[1]);
+        }
+
+        private async Task ReloadActive(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            var active = sessionManager.GetProcesses();
+            windows.Clear();
+            foreach (var item in active)
+            {
+                windows.Add(new AppItem
+                {
+                    Name = item.Key.Name,
+                    ID = item.Key.Package,
+                    Info = item.Key.Info.Replace("=", "")
+                });
+            }
+            // Update UI
+            DispatcherQueue.TryEnqueue(() =>
+            {
+                try
+                {
+                    if (!DispatcherQueue.HasThreadAccess)
+                    {
+                        Console.Error.WriteLine("Not on UI Thread!");
+                    }
+                    if (ActiveGridRepeater != null && windows != null)
+                    {
+                        ActiveGridRepeater.ItemsSource = null;
+                        ActiveGridRepeater.ItemsSource = windows;
+                        ActiveGridRepeater.UpdateLayout();
+                    }
+                    else
+                    {
+                        Debug.WriteLine("UI elements not ready");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.Error.WriteLine(e);
+                }
+            });
         }
 
         private async Task ReloadApps(AdvancedSharpAdbClient.Models.DeviceData device, int delay = 0)
@@ -221,7 +285,8 @@ namespace Extendroid
         {
             
             var lines = output.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            List<AppItem> apps = new List<AppItem>();
+            systemApps.Clear();
+            installedApps.Clear();
             foreach (var line in lines)
             {
                 // Skip non-app lines
@@ -234,12 +299,24 @@ namespace Extendroid
                 var appName = string.Join(" ", parts.Take(parts.Length - 1));
                 var packageId = parts.Last();
 
-                apps.Add(new AppItem
+                if(line.StartsWith(" * "))
                 {
-                    Name = appName,
-                    ID = packageId,
-                    Info = line.StartsWith(" * ") ? "System" : "Installed"
-                });
+                    systemApps.Add(new AppItem
+                    {
+                        Name = appName,
+                        ID = packageId,
+                        Info = "System"
+                    });
+                }
+                else
+                {
+                    installedApps.Add(new AppItem
+                    {
+                        Name = appName,
+                        ID = packageId,
+                        Info = "Installed"
+                    });
+                }
             }
 
             // Update UI
@@ -251,9 +328,18 @@ namespace Extendroid
                     {
                         Console.Error.WriteLine("Not on UI Thread!");
                     }
-                    if (AllGridRepeater != null && apps != null)
+                    if (SystemGridRepeater != null && systemApps!=null)
                     {
-                        AllGridRepeater.ItemsSource = apps;
+                        SystemGridRepeater.ItemsSource = null;
+                        SystemGridRepeater.ItemsSource = systemApps;
+                        SystemGridRepeater.UpdateLayout();
+                    }
+                    if (AllGridRepeater != null && installedApps != null)
+                    {
+                        
+                        AllGridRepeater.ItemsSource = null;
+                        AllGridRepeater.ItemsSource = installedApps;
+                        AllGridRepeater.UpdateLayout();
                     }
                     else
                     {
@@ -288,6 +374,7 @@ namespace Extendroid
         private async void OnDeviceSelected(object sender, SelectionChangedEventArgs e)
         {
             await ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
+            await ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
         }
 
         private async void OnAndroidBtnClick(object sender, RoutedEventArgs e)
@@ -302,7 +389,8 @@ namespace Extendroid
 
         private async void OnReloadBtnClick(object sender, RoutedEventArgs e)
         {
-            
+            await ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
+            await ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
         }
 
         private void OnActiveGridItemClick(object sender, PointerRoutedEventArgs e)
@@ -310,14 +398,47 @@ namespace Extendroid
             
         }
 
-        private void OnAppGridItemClick(object sender, PointerRoutedEventArgs e)
+        private void OnSystemAppGridItemClick(object sender, PointerRoutedEventArgs e)
         {
-            
+            if (sender is StackPanel stackPanel)
+            {
+                var device = ActiveDevice();
+                if (device == null) return;
+                var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
+                var app = systemApps.Find(a => a.ID == appPackage);
+                CreateWindow createWindow = new CreateWindow(this, sessionManager, (AdvancedSharpAdbClient.Models.DeviceData)device, app);
+                createWindow.Activate();
+            }
+        }
+
+        private void OnInstalledAppGridItemClick(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is StackPanel stackPanel)
+            {
+                var device = ActiveDevice();
+                if (device == null) return;
+                var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
+                var app = installedApps.Find(a => a.ID == appPackage);
+                CreateWindow createWindow = new CreateWindow(this,sessionManager,(AdvancedSharpAdbClient.Models.DeviceData)device,app);
+                createWindow.Activate();
+            }
         }
 
         private async void OnKillActiveItemClick(object sender, RoutedEventArgs e)
         {
-            
+            if (sender is Button b)
+            {
+                var device = (AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice();
+                if (device == null) return;
+                var appPackage = (((b.Parent as Grid).Children.ElementAt(0) as StackPanel).Children.ElementAt(1) as TextBlock).Text;
+                var app = installedApps.Find(a => a.ID == appPackage);
+                await sessionManager.RequestTermination(new ThreadKey
+                {
+                    Name = app.Name,
+                    Package = app.ID,
+                    Serial = device.Serial
+                });
+            }
         }
 
         private void OnPointerEnter(object sender, PointerRoutedEventArgs e)

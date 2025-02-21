@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\Admin\source\repos\Extendroid\Properties\PublishProfiles\win-x64.pubxml</_LastSelectedProfileId>
+    <ActiveDebugProfile>Extendroid (Package)</ActiveDebugProfile>
+    <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <SmallTileSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</SmallTileSource>
+    <MediumTileSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</MediumTileSource>
+    <WideTileSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</WideTileSource>
+    <LargeTileSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</LargeTileSource>
+    <AppIconSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</AppIconSource>
+    <SplashScreenSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</SplashScreenSource>
+    <BadgeLogoSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</BadgeLogoSource>
+    <PackageLogoSource>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</PackageLogoSource>
+    <Source>C:\Users\Admin\source\repos\Extendroid\Assets\extendroid.png</Source>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
   <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>

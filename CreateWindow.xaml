@@ -6,9 +6,149 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 Title="Start App"
 mc:Ignorable="d">
-    <StackPanel Background="{StaticResource theme5}" >
-        <StackPanel  HorizontalAlignment="Center" Margin="15">
-            
-        </StackPanel>
-    </StackPanel>
+    <ScrollViewer HorizontalScrollMode="Auto"
+              VerticalScrollMode="Auto"
+              HorizontalScrollBarVisibility="Auto"
+              VerticalScrollBarVisibility="Auto">
+            <StackPanel Background="{StaticResource theme5}" Name="RootPanel" >
+            <StackPanel  HorizontalAlignment="Center" Margin="15">
+                <!-- Resolution Selection -->
+                <TextBlock Text="Resolution" FontSize="16" FontWeight="Bold" Margin="0 10 25 0"/>
+                <ItemsControl x:Name="Resolutions" ItemsSource="{x:Bind ResolutionOptions}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                            <!-- Align items horizontally -->
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton ToolTipService.ToolTip="{Binding Name}" Margin="0 0 5 0" Click="OnResolutionToggled">
+                                <Image Source="{Binding ImagePath}" Width="25" Height="25"/>
+                            </ToggleButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Aspect Ratio Selection -->
+                <TextBlock Text="Aspect Ratio" FontSize="16" FontWeight="Bold" Margin="0 10 25 0"/>
+                <ItemsControl x:Name="Aspects" ItemsSource="{x:Bind AspectRatioOptions}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                            <!-- Align items horizontally -->
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton ToolTipService.ToolTip="{Binding Name}" Margin="0 0 5 0" Click="OnAspectToggled">
+                                <Image Source="{Binding ImagePath}" Width="25" Height="25"/>
+                            </ToggleButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Density Selection -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Density" FontSize="16" FontWeight="Bold" Margin="0 10 10 0"/>
+                    <TextBlock Text="(dpi)"  FontSize="16" Margin="0 10 25 0"/>
+                </StackPanel>
+                <ItemsControl x:Name="Densities" ItemsSource="{x:Bind DensityOptions}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                            <!-- Align items horizontally -->
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton Margin="0 0 5 0" ToolTipService.ToolTip="{Binding}" Click="OnDensityToggled">
+                                <TextBlock Text="{Binding}" FontSize="12"/>
+                            </ToggleButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 10">
+                    <ToggleButton x:Name="OnTopBtn" ToolTipService.ToolTip="Always On Top" Margin="0 0 5 0">
+                        <Image Source="Assets/on_top.png" Width="25" Height="25" />
+                    </ToggleButton>
+                    <ToggleButton x:Name="KeepAwakeBtn" ToolTipService.ToolTip="Keep Device Awake" Margin="0 0 5 0">
+                        <Image Source="Assets/keep_awake.png" Width="25" Height="25"/>
+                    </ToggleButton>
+                    <ToggleButton x:Name="DisableScreenBtn" ToolTipService.ToolTip="Disable Physical Screen" Margin="0 0 5 0">
+                        <Image Source="Assets/disable_screen.png" Width="25" Height="25"/>
+                    </ToggleButton>
+                    <Button Click="OnOrientationToggled" ToolTipService.ToolTip="Orientation" Margin="0 0 5 0">
+                        <Image Name="Orientation" Width="25" Height="25" Source="Assets/portrait.png"/>
+                    </Button>
+                    <Button Click="StartAppClicked" Content="Start" Height="38" Width="100" FontWeight="Bold" Margin="5 0"/>
+                </StackPanel>
+                <!-- Advanced Settings -->
+                <Expander Header="Advanced Settings" IsExpanded="False" Width="400">
+                    <StackPanel x:Name="Advanced" Spacing="5">
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton x:Name="DisableControlBtn" ToolTipService.ToolTip="Disable Control" Margin="0 0 5 0">
+                                <Image Source="Assets/controls_off.png" Width="25" Height="25" />
+                            </ToggleButton>
+                            <ToggleButton x:Name="DisableVideoBtn" ToolTipService.ToolTip="Disable Video" Margin="0 0 5 0">
+                                <Image Source="Assets/video_off.png" Width="25" Height="25" />
+                            </ToggleButton>
+                            <ToggleButton x:Name="DisableAudioBtn" ToolTipService.ToolTip="Disable Audio" Margin="0 0 5 0">
+                                <Image Source="Assets/audio_off.png" Width="25" Height="25" />
+                            </ToggleButton>
+                            <ToggleButton x:Name="OnBackgroundBtn" ToolTipService.ToolTip="Keep running after window close" Margin="0 0 5 0">
+                                <Image Source="Assets/on_background.png" Width="25" Height="25" />
+                            </ToggleButton>
+                            <ToggleButton x:Name="NoBorderBtn" ToolTipService.ToolTip="Borderless Windows" Margin="0 0 5 0">
+                                <Image Source="Assets/no_border.png" Width="25" Height="25" />
+                            </ToggleButton>
+                        </StackPanel>
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Crop" Grid.Column="0" Grid.Row="0"/>
+                            <TextBox x:Name="CropParams" PlaceholderText="width:height:x:y" Grid.Column="1" Grid.Row="0" Margin="0 0 5 0"/>
+
+                            <TextBlock Text="Rotation" Grid.Column="0" Grid.Row="1"/>
+                            <TextBox x:Name="RotationParams" PlaceholderText="angle in degrees" Grid.Column="1" Grid.Row="1" Margin="0 0 5 0"/>
+
+                            <TextBlock Text="Record to" Grid.Row="2" Grid.Column="0" Height="25"/>
+                            <TextBox x:Name="RecordPath" PlaceholderText="path/to/video.mp4" Grid.Column="1" Grid.Row="2" Margin="0 0 5 0"/>
+
+                            <TextBlock Text="Screen Timeout" Grid.Column="0" Grid.Row="3"/>
+                            <TextBox x:Name="ScreenTimeout" PlaceholderText="minutes:seconds" Grid.Column="1" Grid.Row="3" Margin="0 0 5 0"/>
+
+                            <TextBlock Text="Mirroring Timeout" Grid.Column="0" Grid.Row="4"/>
+                            <TextBox x:Name="MirrorTimeout" PlaceholderText="minutes:seconds" Grid.Column="1" Grid.Row="4" Margin="0 0 5 0"/>
+
+                            <TextBlock Text="Max FPS" Grid.Row="5" Grid.Column="0"/>
+                            <TextBox x:Name="MaxFPS" PlaceholderText="value" Grid.Column="1" Grid.Row="5" Margin="0 0 5 0"/>
+                        </Grid>
+
+
+
+                        <TextBlock Text="Shortcut Modifier Keys"/>
+                        <ListView x:Name="Shortcuts" SelectionMode="Multiple" ItemsSource="{Binding ShortcutKeys}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Vertical" MaximumRowsOrColumns="3" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
 </Window>
