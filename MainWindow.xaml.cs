@@ -4,31 +4,23 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Microsoft.UI.Input;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using System.Threading;
 using Extendroid.Lib;
 using AdvancedSharpAdbClient;
-using System.Windows.Controls;
 using ListViewItem = Microsoft.UI.Xaml.Controls.ListViewItem;
 using Button = Microsoft.UI.Xaml.Controls.Button;
 using SelectionChangedEventArgs = Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs;
 using System.Text;
-using System.Collections.ObjectModel;
 using StackPanel = Microsoft.UI.Xaml.Controls.StackPanel;
 using TextBlock = Microsoft.UI.Xaml.Controls.TextBlock;
 using Grid = Microsoft.UI.Xaml.Controls.Grid;
+using AdvancedSharpAdbClient.DeviceCommands;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -129,30 +121,27 @@ namespace Extendroid
                     });
                 }
                 catch (System.NullReferenceException e) { }
-                if(count% 2 == 0)
+                DispatcherQueue.TryEnqueue(() =>
                 {
-                    DispatcherQueue.TryEnqueue(() =>
+                    if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
                     {
-                        var device = ActiveDevice();
-                        if (device != null)
-                        {
-                            ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)device);
-                        }
-                    });
-                }
-                if (count == 3)
+                        ReloadActive(device);
+                    }
+                });
+                if (count == 6)
                 {
                     count = 0;
                     DispatcherQueue.TryEnqueue(() =>
                     {
-                        var device = ActiveDevice();
-                        if (device != null){ 
-                            ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)device); 
+                        if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+                        {
+                            ReloadApps(device);
+                            ReloadBattery(device);
                         }
                     });
 
                 }
-                Thread.Sleep(10000);
+                Thread.Sleep(5000);
                 try
                 {
                     if (!this.Visible) run = false;
@@ -169,6 +158,19 @@ namespace Extendroid
             if (item == null) return null;
             var splits = item.Content.ToString().Split(" ");
             return devices.First(d => d.Name == splits[0] && d.Serial == splits[1]);
+        }
+
+        private async void ReloadBattery(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            AdbManager.adbClient.ExecuteShellCommand(device, "dumpsys battery | grep level", (output) =>
+            {
+                var level = output.Split(":")[1].Trim();
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    BatteryLevel.Text = level;
+                });
+                return true;
+            });
         }
 
         private async Task ReloadActive(AdvancedSharpAdbClient.Models.DeviceData device)
@@ -207,6 +209,7 @@ namespace Extendroid
                 catch (Exception e)
                 {
                     Console.Error.WriteLine(e);
+                    App.LogError(e);
                 }
             });
         }
@@ -239,8 +242,8 @@ namespace Extendroid
                 var output = new StringBuilder();
                 var error = new StringBuilder();
 
-                process.OutputDataReceived += (s, e) => AppendSafe(output, e.Data);
-                process.ErrorDataReceived += (s, e) => AppendSafe(error, e.Data);
+                process.OutputDataReceived += (s, e) => Extendroid.Lib.Utils.AppendSafe(output, e.Data);
+                process.ErrorDataReceived += (s, e) => Extendroid.Lib.Utils.AppendSafe(error, e.Data);
 
                 process.Start();
 
@@ -264,20 +267,11 @@ namespace Extendroid
             }catch(Exception ex)
             {
                 Console.Error.WriteLine(ex.Message);
-            }finally
+                App.LogError(ex);
+            }
+            finally
             {
                 loading = false;
-            }
-        }
-
-        private static void AppendSafe(StringBuilder builder, string? data)
-        {
-            if (!string.IsNullOrEmpty(data))
-            {
-                lock (builder)
-                {
-                    builder.AppendLine(data);
-                }
             }
         }
 
@@ -349,6 +343,7 @@ namespace Extendroid
                 catch(Exception e)
                 {
                     Console.Error.WriteLine(e);
+                    App.LogError(e);
                 }
             });
         }
@@ -364,33 +359,62 @@ namespace Extendroid
 
         private async void OnRestartBtnClick(object sender, RoutedEventArgs e)
         {
-            
+            await adbManager.refreshAdb();
+
         }
-        private void OnSettingsBtnClick(object sender, RoutedEventArgs e)
+        private void OnPanelBtnClick(object sender, RoutedEventArgs e)
         {
-            
+            Panel panel = new Panel();
+            panel.Activate();
         }
 
         private async void OnDeviceSelected(object sender, SelectionChangedEventArgs e)
         {
-            await ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
-            await ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
-        }
-
-        private async void OnAndroidBtnClick(object sender, RoutedEventArgs e)
-        {
-
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                await ReloadApps(device);
+                await ReloadActive(device);
+                ReloadBattery(device);
+            }
         }
 
         private async void OnLockBtnClick(object sender, RoutedEventArgs e)
         {
-            
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                await sessionManager.execScrcpy(ArgumentsBuilder.DimPhysicalDisplay(device), null);
+            }
+        }
+
+        private async void OnMirrorDeviceBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                CreateWindow createWindow = new CreateWindow(this, sessionManager, device, null);
+                createWindow.Activate();
+            }
+        }
+        
+        private async void OnNewActionBtnClick(object sender, RoutedEventArgs e)
+        {
+            //new action
+        }
+        private async void OnTerminalBtnClick(object sender, RoutedEventArgs e)
+        {
+            if(ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                AdbManager.startTerminal(device);
+            }
         }
 
         private async void OnReloadBtnClick(object sender, RoutedEventArgs e)
         {
-            await ReloadApps((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
-            await ReloadActive((AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice());
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                await ReloadApps(device);
+                await ReloadActive(device);
+                ReloadBattery(device);
+            }
         }
 
         private void OnActiveGridItemClick(object sender, PointerRoutedEventArgs e)
@@ -402,12 +426,13 @@ namespace Extendroid
         {
             if (sender is StackPanel stackPanel)
             {
-                var device = ActiveDevice();
-                if (device == null) return;
-                var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
-                var app = systemApps.Find(a => a.ID == appPackage);
-                CreateWindow createWindow = new CreateWindow(this, sessionManager, (AdvancedSharpAdbClient.Models.DeviceData)device, app);
-                createWindow.Activate();
+                if(ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+                {
+                    var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
+                    var app = systemApps.Find(a => a.ID == appPackage);
+                    CreateWindow createWindow = new CreateWindow(this, sessionManager, device, app);
+                    createWindow.Activate();
+                }
             }
         }
 
@@ -415,12 +440,13 @@ namespace Extendroid
         {
             if (sender is StackPanel stackPanel)
             {
-                var device = ActiveDevice();
-                if (device == null) return;
-                var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
-                var app = installedApps.Find(a => a.ID == appPackage);
-                CreateWindow createWindow = new CreateWindow(this,sessionManager,(AdvancedSharpAdbClient.Models.DeviceData)device,app);
-                createWindow.Activate();
+                if(ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+                {
+                    var appPackage = (stackPanel.Children.ElementAt(1) as TextBlock).Text;
+                    var app = installedApps.Find(a => a.ID == appPackage);
+                    CreateWindow createWindow = new CreateWindow(this, sessionManager, device, app);
+                    createWindow.Activate();
+                }
             }
         }
 
@@ -428,16 +454,39 @@ namespace Extendroid
         {
             if (sender is Button b)
             {
-                var device = (AdvancedSharpAdbClient.Models.DeviceData)ActiveDevice();
-                if (device == null) return;
-                var appPackage = (((b.Parent as Grid).Children.ElementAt(0) as StackPanel).Children.ElementAt(1) as TextBlock).Text;
-                var app = installedApps.Find(a => a.ID == appPackage);
-                await sessionManager.RequestTermination(new ThreadKey
+                try
                 {
-                    Name = app.Name,
-                    Package = app.ID,
-                    Serial = device.Serial
-                });
+                    if(ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device )
+                    {
+                        var package = (((b.Parent as Grid).Children.ElementAt(0) as StackPanel).Children.ElementAt(1) as TextBlock).Text;
+                        if(package == device.Name)
+                        {
+                            await sessionManager.RequestTermination(new ThreadKey
+                            {
+                                Name = "Screen Mirroring",
+                                Package = device.Name,
+                                Serial = device.Serial
+                            });
+                        }
+                        else
+                        {
+                            var app = installedApps.Concat(systemApps).ToList().Find(a => a.ID == package);
+
+                            await sessionManager.RequestTermination(new ThreadKey
+                            {
+                                Name = app.Name,
+                                Package = app.ID,
+                                Serial = device.Serial
+                            });
+                        }
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine(ex.Message);
+                    App.LogError(ex);
+                }
             }
         }
 

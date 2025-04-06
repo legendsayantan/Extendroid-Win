@@ -33,9 +33,18 @@ namespace Extendroid.Lib
 
             var argsBuilder = new ArgumentsBuilder();
             var args = argsBuilder.get(device, app);
-            var threadKey = new ThreadKey { Serial = device.Serial, Name=app.Name, Package = app.ID, Info=argsBuilder.getResolution(settings) };
+            var threadKey = new ThreadKey { 
+                Serial = device.Serial, 
+                Name = (app == null ? "Screen Mirroring" : app.Name), 
+                Package = (app == null ? device.Name : app.ID), 
+                Info=argsBuilder.getResolution(settings) 
+            };
+            await execScrcpy(args, threadKey);
+        }
 
-            string scrcpyExePath = Path.Combine(scrcpyFolder.Path,"scrcpy.exe"); // Ensure this path is correct for your environment
+        public async Task execScrcpy(string args,ThreadKey? threadKey)
+        {
+            string scrcpyExePath = Path.Combine(scrcpyFolder.Path, "scrcpy.exe"); // Ensure this path is correct for your environment
 
             var startInfo = new ProcessStartInfo
             {
@@ -62,20 +71,24 @@ namespace Extendroid.Lib
             process.OutputDataReceived += (s, e) => AppendSafe(output, e.Data);
             process.ErrorDataReceived += (s, e) => AppendSafe(error, e.Data);
 
-            process.Exited += (sender, e) =>
+            if(threadKey != null)
             {
-                _processes.TryRemove(threadKey, out _);
-                process.Dispose();
-            };
+                process.Exited += (sender, e) =>
+                {
+                    _processes.TryRemove(threadKey, out _);
+                    process.Dispose();
+                };
+            }
 
             try
             {
                 process.Start();
-                _processes.TryAdd(threadKey, process);
+                if(threadKey!=null) _processes.TryAdd(threadKey, process);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error starting scrcpy: {ex.Message}");
+                App.LogError(ex);
                 process.Dispose();
                 throw;
             }

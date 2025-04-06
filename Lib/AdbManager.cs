@@ -13,6 +13,9 @@ using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
 using Image = Microsoft.UI.Xaml.Controls.Image;
 using Windows.Storage;
+using System.Diagnostics.Eventing.Reader;
+using System.Windows.Media;
+using System.Diagnostics;
 namespace Extendroid.Lib
 {
     internal class AdbManager
@@ -27,6 +30,8 @@ namespace Extendroid.Lib
         static IReadOnlyList<IZeroconfHost> DiscoveredDomains = null;
         public static AdbClient adbClient;
         static List<string> ConnectedIps = new List<string>();
+        static List<int> availablePorts = new List<int>();
+        static StorageFolder adbFolder;
 
         public static Action<string> StateCallback;
         public AdbManager()
@@ -34,6 +39,7 @@ namespace Extendroid.Lib
             EnsureAdb();
             adbClient = new AdbClient();
             DiscoveredDomains = null;
+            adbFolder = ApplicationData.Current.LocalFolder.CreateFolderAsync("scrcpy", CreationCollisionOption.OpenIfExists).AsTask().Result;
         }
         public AdbManager(Image i, Windows.UI.Color foregroundColor, Windows.UI.Color backgroundColor) : this()
         {
@@ -56,6 +62,13 @@ namespace Extendroid.Lib
                     Console.WriteLine("Can't start adb server");
                 }
             }
+        }
+
+        public async Task refreshAdb()
+        {
+            await adbClient.KillAdbAsync();
+            await Task.Delay(1500);
+            await EnsureAdb();
         }
 
         public void TryToQRConnect()
@@ -91,9 +104,48 @@ namespace Extendroid.Lib
                 }
                 if (port != -1)
                 {
-                    StateCallback.Invoke($"Pairing with \n{ip}");
-                    adbClient.Pair(ip, port, Code);
-                    if (!ConnectedIps.Contains(ip)) await ConnectTo(ip);
+                    StateCallback.Invoke($"Pairing with {ip}");
+                    try
+                    {
+                        adbClient.Pair(ip, port, Code);
+                        if (!ConnectedIps.Contains(ip)) await ConnectTo(ip);
+                    }
+                    catch (Exception e)
+                    {
+                        StateCallback.Invoke($"Error: {e.Message}");
+                        App.LogError(e);
+                        if (e.Message.Contains("'FAIL'", StringComparison.OrdinalIgnoreCase))
+                        {
+                            //fallback pairing
+                            await Task.Delay(1500);
+                            var dev = adbClient.GetDevices();
+                            if (dev.Any((x) => x.Serial.Contains(ip)))
+                            {
+                                return;
+                            }
+                            StateCallback.Invoke($"Fallback Pairing with {ip}");
+                            //run adb.exe pair ip:port code
+                            ProcessStartInfo psi = new ProcessStartInfo
+                            {
+                                FileName = "adb.exe",
+                                Arguments = $"pair {ip}:{port} {Code}",
+                                UseShellExecute = false, 
+                                CreateNoWindow = true, 
+                                WorkingDirectory = adbFolder.Path
+                            };
+                            Process p = Process.Start(psi);
+                            await p.WaitForExitAsync();
+                            if (p.ExitCode == 0)
+                            {
+                                StateCallback.Invoke($"Fallback Pairing Success");
+                                if (!ConnectedIps.Contains(ip)) await ConnectTo(ip);
+                            }
+                            else
+                            {
+                                StateCallback.Invoke($"Fallback Pairing Failed");
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -105,15 +157,15 @@ namespace Extendroid.Lib
 
         public async static Task ConnectTo(string IP)
         {
-            StateCallback.Invoke($"Connecting with \n{IP}");
-            var ports = new List<int>();
+            StateCallback.Invoke($"Connecting with {IP}");
+            availablePorts = new List<int>();
             // Create a CancellationTokenSource to control task cancellation
             var cancellationTokenSource = new CancellationTokenSource();
             Thread thread = new Thread(new ThreadStart(async () =>
             {
                 void OnPortFound(int port)
                 {
-                    ports.Add(port);
+                    availablePorts.Add(port);
                 }
                 await PortScanner.StartScan(IP, 30000, 49151, OnPortFound, cancellationTokenSource.Token);
             }));
@@ -121,24 +173,36 @@ namespace Extendroid.Lib
             //schedule task every 3 seconds
             Thread connectionThread = new Thread(new ThreadStart(async () =>
             {
-                while (true)
+                var running = true;
+                while (running)
                 {
-                    foreach (var port in ports)
+                    foreach (var port in availablePorts)
                     {
-                        if (adbClient.Connect(IP, port).Contains("connected", StringComparison.OrdinalIgnoreCase))
-                        {
-                            ConnectedIps.Add(IP);
-                            ports = new List<int>();
-                            StateCallback.Invoke($"Connected.");
-                            //cancellationTokenSource.Cancel(); //Because Cancelling lags out the app
-                            return;
-                        }
+                        tryConnectTo(IP, port, () => {
+                            //cancellationTokenSource.Cancel(); //lags out
+                            running = false;
+                        });
+                        if(!running) break;
                     }
                     await Task.Delay(3000);
                 }
             }));
             connectionThread.Start();
 
+        }
+
+        public static void tryConnectTo(string IP, int port,Action OnSuccess)
+        {
+            StateCallback.Invoke($"Connecting with \n{IP}:{port}");
+            var output = adbClient.Connect(IP, port);
+            App.LogRaw(output);
+            if (output.Contains("connected", StringComparison.OrdinalIgnoreCase))
+            {
+                ConnectedIps.Add(IP);
+                availablePorts = new List<int>();
+                StateCallback.Invoke($"Connected.");
+                OnSuccess.Invoke();
+            }
         }
 
         public BitmapImage GenerateQR(string input, Windows.UI.Color foregroundColor, Windows.UI.Color backgroundColor)
@@ -177,8 +241,25 @@ namespace Extendroid.Lib
             }
             catch
             {
+                //not a real exception, just a bad port
                 return false;
             }
+        }
+
+
+        public static void startTerminal(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/k @ECHO OFF & title Device Terminal & adb -s {device.Serial} shell",
+                UseShellExecute = true, // Ensures the window is visible
+                CreateNoWindow = false, // Allows the window to be seen
+                WorkingDirectory = adbFolder.Path,
+                WindowStyle = ProcessWindowStyle.Normal // Normal-sized window
+            };
+
+            Process.Start(psi);
         }
     }
 }

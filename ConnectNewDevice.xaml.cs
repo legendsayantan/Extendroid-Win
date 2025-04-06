@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Graphics;
 
@@ -34,6 +35,9 @@ namespace Extendroid
         [DllImport("user32.dll")]
         private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 
+        string providedIP;
+        string providedPort;
+
         public ConnectNewDevice(Action OnConnect)
         {
             this.InitializeComponent();
@@ -43,7 +47,7 @@ namespace Extendroid
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
             // Set the size of the window
-            appWindow.Resize(new SizeInt32(500, 350));
+            appWindow.Resize(new SizeInt32(600, 450));
 
             // Remove the thick frame style to make the window non-resizable
             SetWindowLong(hwnd, GWL_STYLE,
@@ -80,6 +84,22 @@ namespace Extendroid
             }
         }
 
+        private void IpPort_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Get the current text
+            var textBox = sender as TextBox;
+            string input = textBox.Text;
+
+            // Check validity
+            string pattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9]):([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$";
+            Regex regex = new Regex(pattern);
+            if (regex.IsMatch(input))
+            {
+                var providedIP = input.Split(':')[0];
+                var providedPort = input.Split(':')[1];
+            }
+        }
+
         private async void OnPairingCodeSubmit(object sender, RoutedEventArgs e)
         {
             // Get the current text
@@ -90,6 +110,18 @@ namespace Extendroid
             if (input.Length == 6)
             {
                 await AdbManager.FindDeviceAndPair(input);
+            }
+        }
+
+
+        private async void OnIpPortSubmit(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(providedIP) || string.IsNullOrEmpty(providedPort))
+            {
+                AdbManager.tryConnectTo(providedIP, int.Parse(providedPort), () =>
+                {
+                    //success
+                });
             }
         }
     }

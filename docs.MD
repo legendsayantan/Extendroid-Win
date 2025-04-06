@@ -24,4 +24,7 @@ Maximum fps : --max-fps=
 
 --window-title=text
 
+things to add :
+-about page
+
 

@@ -62,9 +62,10 @@
     <Content Remove="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Remove="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Remove="Assets\Square44x44Logo.targetsize-48.png" />
-    <Content Remove="Assets\video_off.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\Unlock.png" />
+    <None Remove="Assets\video_off.png" />
     <None Remove="ConnectNewDevice.xaml" />
     <None Remove="CreateWindow.xaml" />
   </ItemGroup>
@@ -91,7 +92,8 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AdvancedSharpAdbClient" Version="3.3.13" />
+    <PackageReference Include="AdvancedSharpAdbClient" Version="3.4.14" />
+    <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250108002" />
     <PackageReference Include="QRCoder" Version="1.6.0" />
@@ -99,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\Android.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\battery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\cast.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Connect.png">
@@ -113,10 +121,19 @@
     <Content Update="Assets\Restart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\scrcpy\icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\Settings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Sync.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\terminal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Unlock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -151,9 +168,12 @@
     <None Update="Assets\portrait.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\video_off.png">
+    <Page Update="Panel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Content Update="Assets\video_off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CreateWindow.xaml">
@@ -191,5 +211,6 @@
     <AppxBundle>Never</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <AppxPackageDir>C:\Users\Admin\source\repos\Extendroid\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppPackages\</AppxPackageDir>
   </PropertyGroup>
 </Project>

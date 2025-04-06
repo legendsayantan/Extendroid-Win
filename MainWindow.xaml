@@ -75,38 +75,49 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Apps" Foreground="{StaticResource theme1}" FontSize="24" />
-                    <Button Grid.Column="1" Margin="5 0 5 0" ToolTipService.ToolTip="More Options">
-                        <Image Source="Assets/Other.png" Width="22" Height="22" />
+                    <Canvas Grid.Column="1" Width="60" Height="30" Margin="5 0 0 0">
+                        <Image Source="Assets/battery.png" Width="56" Height="28" Canvas.Left="0" Canvas.Top="0" />
+                        <TextBlock x:Name="BatteryLevel" Foreground="{StaticResource theme1}" FontSize="12" Canvas.Left="23" Canvas.Top="7"/>
+                    </Canvas>
+                    <Button Grid.Column="2" Margin="5 0 5 0" ToolTipService.ToolTip="Android Actions">
+                        <Image Source="Assets/Android.png" Width="22" Height="22" />
                         <Button.Flyout >
                             <Flyout >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0">
-                                        <Button Margin="0 0 10 0" Click="OnAndroidBtnClick" ToolTipService.ToolTip="Start Shizuku">
-                                            <Image Source="Assets/Android.png" Width="22" Height="22" />
+                                        <Button Margin="0 0 10 0" Click="OnLockBtnClick" ToolTipService.ToolTip="Lock Physical Display">
+                                            <Image Source="Assets/Lock.png" Width="22" Height="22" />
                                         </Button>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
-                                        <Button Click="OnLockBtnClick" ToolTipService.ToolTip="Disable Physical Display">
-                                            <Image Source="Assets/Lock.png" Width="22" Height="22" />
+                                        <Button Margin="0 0 10 0" Click="OnTerminalBtnClick" ToolTipService.ToolTip="Device Terminal">
+                                            <Image Source="Assets/terminal.png" Width="22" Height="22" />
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <Button Margin="0" Click="OnNewActionBtnClick" ToolTipService.ToolTip="Other Actions">
+                                            <Image Source="Assets/Other.png" Width="22" Height="22" />
                                         </Button>
                                     </StackPanel>
                                 </Grid>
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button Grid.Column="2" Margin="5 0 5 0" Click="OnReloadBtnClick" ToolTipService.ToolTip="Reload">
+                    <Button Grid.Column="3" Margin="5 0 5 0" Click="OnMirrorDeviceBtnClick" ToolTipService.ToolTip="Mirror Device Screen">
+                        <Image Source="Assets/cast.png" Width="22" Height="22" />
+                    </Button>
+                    <Button Grid.Column="4" Margin="5 0 5 0" Click="OnReloadBtnClick" ToolTipService.ToolTip="Reload">
                         <Image Source="Assets/Sync.png" Width="22" Height="22" />
                     </Button>
-                    <Button Grid.Column="3" Margin="5 0 5 0" Click="OnLockBtnClick" ToolTipService.ToolTip="Disable Physical Display">
-                        <Image Source="Assets/Lock.png" Width="22" Height="22" />
-                    </Button>
-                    <Button Grid.Column="4" Margin="5 0 10 0" Click="OnSettingsBtnClick" ToolTipService.ToolTip="Settings">
+                    <Button Grid.Column="5" Margin="5 0 10 0" Click="OnPanelBtnClick" ToolTipService.ToolTip="Panel">
                         <Image Source="Assets/Settings.png" Width="22" Height="22" />
                     </Button>
                 </Grid>
@@ -124,11 +135,12 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <StackPanel Grid.Column="0" PointerPressed="OnActiveGridItemClick">
+                                            <StackPanel Grid.Column="0" PointerPressed="OnActiveGridItemClick" ToolTipService.ToolTip="{x:Bind ID}">
                                                 <TextBlock x:Name="text" Text="{x:Bind Name}" FontWeight="Bold" FontSize="14" Foreground="{StaticResource theme1}"/>
-                                                <TextBlock Grid.Column="1" Text="{x:Bind ID}" Width="0" Height="0"/>
-                                                <TextBlock Grid.Column="1" Text="{x:Bind Info}" FontSize="12" Margin="0" Foreground="{StaticResource theme2}"/>
+                                                <TextBlock Grid.Column="1" Text="{x:Bind ID}" Margin="0" Height="0"/>
+                                                <TextBlock Grid.Column="2" Text="{x:Bind Info}" FontSize="12" Margin="0" Foreground="{StaticResource theme2}"/>
                                             </StackPanel>
                                             <Button Grid.Column="1" Foreground="{StaticResource white}" Click="OnKillActiveItemClick">
                                                 X

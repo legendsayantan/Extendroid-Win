@@ -60,7 +60,9 @@ namespace Extendroid
             RootPanel.DataContext = this;
             Densities.Loaded += (sender, e) => LoadSettings();
             Advanced.Loaded += (sender, e) => LoadAdvancedSettings();
-            ResolutionOptions = new List<OptionItem>
+            if (item != null)
+            {
+                ResolutionOptions = new List<OptionItem>
             {
                 new OptionItem("Default", "Assets/default.png"),
                 new OptionItem("480", "Assets/res_480p.png"),
@@ -68,8 +70,7 @@ namespace Extendroid
                 new OptionItem("1440", "Assets/res_2k.png"),
                 new OptionItem("2160", "Assets/res_4k.png")
             };
-
-            AspectRatioOptions = new List<OptionItem>
+                AspectRatioOptions = new List<OptionItem>
             {
                 new OptionItem("9/16", "Assets/ar_9_16.png"),
                 new OptionItem("2/3", "Assets/ar_2_3.png"),
@@ -77,11 +78,17 @@ namespace Extendroid
                 new OptionItem("3/2", "Assets/ar_3_2.png"),
                 new OptionItem("16/9", "Assets/ar_16_9.png")
             };
-
-            DensityOptions = new List<string>
+                DensityOptions = new List<string>
             {
                 "Default","120","160","200","240","320","480","640"
             };
+            }
+            else
+            {
+                ResHeader.Visibility = Visibility.Collapsed;
+                AspectHeader.Visibility = Visibility.Collapsed;
+                DensityHeader.Visibility = Visibility.Collapsed;
+            }
 
             Orientations = new List<string>
             {
@@ -97,7 +104,7 @@ namespace Extendroid
             var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hwnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-            appWindow.Resize(new SizeInt32(500, 380));
+            appWindow.Resize(new SizeInt32(600, 480));
             // Remove the thick frame style to make the window non-resizable
             SetWindowLong(hwnd, GWL_STYLE,
                 WS_BORDER | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU);
@@ -106,7 +113,15 @@ namespace Extendroid
             sessionManager = s;
             device = d;
             app = item;
-            Title = "Start " + item.Name+" ("+item.Info+") on "+d.Name;
+            if (item == null)
+            {
+                Title = "Screen Mirroring of " + d.Name;
+
+            }
+            else
+            {
+                Title = "Start " + item.Name + " (" + item.Info + ") on " + d.Name;
+            }
 
             
         }
@@ -382,10 +397,7 @@ namespace Extendroid
 
         private void LoadOrientation(string orientation)
         {
-            Console.WriteLine(orientation);
-            var path = orientation == "Portrait"? "ms-appx:///Assets/portrait.png": "ms-appx:///Assets/landscape.png";
-            var uri = new Uri(path, UriKind.Absolute);
-            Orientation.Source = new BitmapImage(uri);
+            Orientation.Rotation = orientation == "Portrait" ? 0 : 90;
         }
 
         private void LoadToggleState(ToggleButton button, bool? state)

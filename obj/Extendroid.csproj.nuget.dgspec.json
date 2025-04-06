@@ -52,13 +52,11 @@
           "dependencies": {
             "AdvancedSharpAdbClient": {
               "target": "Package",
-              "version": "[3.3.13, )"
+              "version": "[3.4.14, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
+            "CommunityToolkit.WinUI.Notifications": {
               "target": "Package",
-              "version": "[8.0.11, )",
-              "autoReferenced": true
+              "version": "[7.1.2, )"
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "target": "Package",
@@ -99,10 +97,6 @@
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[8.0.11, 8.0.11]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
               "version": "[8.0.11, 8.0.11]"
             },
             {

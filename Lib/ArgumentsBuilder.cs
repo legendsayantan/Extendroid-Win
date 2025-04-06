@@ -37,11 +37,14 @@ namespace Extendroid.Lib
             }
             return resolutionStr;
         }
+
         public string get(AdvancedSharpAdbClient.Models.DeviceData device,AppItem app)
         {
             var settings = ApplicationData.Current.LocalSettings;
-            string args = $"-s {device.Serial} --new-display{getResolution(settings).Replace("dpi","")}";
-            args += $" --start-app={app.ID} --window-title=\"{app.Name} via Extendroid\" ";
+            string args = $"-s {device.Serial} ";
+
+            if (app ==null) args+= $" --window-title=\"Mirroring {device.Name}\" ";
+            else args += $"--new-display{getResolution(settings).Replace("dpi", "")} --start-app={app.ID} --window-title=\"{app.Name} via Extendroid\" ";
 
             if (settings.Values["OnTop"] as bool? == true)
             {
@@ -125,6 +128,12 @@ namespace Extendroid.Lib
             }
 
             return args;
+        }
+
+
+        public static string DimPhysicalDisplay(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            return $"-s {device.Serial} --stay-awake --turn-screen-off --window-title=\"Locking Screen...\" --no-video --no-audio --window-height=1 --no-cleanup --time-limit=1";
         }
     }
 }

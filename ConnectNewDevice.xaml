@@ -24,16 +24,37 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" >
-                        <TextBlock Text="Scan using Wireless Debugging menu"/>
-                        <StackPanel Background="{StaticResource theme1}">
+                        <TextBlock Text="Scan using Wireless Debugging menu" Foreground="{StaticResource white}"/>
+                        <StackPanel Background="{StaticResource theme1}" Margin="0 10 0 10">
                             <Image x:Name="QR" Width="210" Height="210" Margin="10"/>
                         </StackPanel>
+						
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="20 0 0 0" >
-                        <TextBlock Text="or, Enter Pairing Code:"/>
-                        <TextBox x:Name="PairingCode" Width="Auto" TextChanged="PairingCode_TextChanged"  Margin="0 10 0 10"/>
-                        <Button x:Name="SubmitPairingCode" Click="OnPairingCodeSubmit">Connect</Button>
-                        <TextBlock x:Name="ConnectStatus" Text="Scanning..." Margin="0 100 0 0" Foreground="{StaticResource theme1}"/>
+                        <TextBlock Text="or, Enter Pairing Code:" Foreground="{StaticResource white}"/>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBox Grid.Column="0" x:Name="PairingCode" Width="Auto" TextChanged="PairingCode_TextChanged" PlaceholderText="123456" Margin="0 10 10 10"/>
+							<Button Grid.Column="1" x:Name="SubmitPairingCode" Click="OnPairingCodeSubmit">Connect</Button>
+						</Grid>
+
+						<TextBlock Text="or, Enter IP address and port:" Margin="0 25 0 0" Foreground="{StaticResource white}"/>
+
+
+
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
+							<TextBox Grid.Column="0" x:Name="IpPort" Width="Auto" TextChanged="IpPort_TextChanged" PlaceholderText="ip:port" Margin="0 10 10 10" />
+							<Button Grid.Column="1" x:Name="SubmitIpPort" Click="OnIpPortSubmit">Connect</Button>
+						</Grid>
+						
+                        <TextBlock x:Name="ConnectStatus" Text="Scanning..." Margin="0 25 0 0" Foreground="{StaticResource theme1}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -43,8 +64,11 @@
         <TabViewItem Header="USB" IsClosable="False">
             <StackPanel Grid.Row="0" Background="{StaticResource theme5}" Height="2000">
                 <StackPanel Margin="20">
-                    <TextBlock Text="To connect via USB, enable 'USB Debugging' and allow the prompt on your device." FontSize="20" TextWrapping="Wrap"/>
-                </StackPanel>
+                    <TextBlock Text="1. Plug in the android device to this computer, using a usb cable." FontSize="20" TextWrapping="Wrap" Margin="0 5"/>
+					<TextBlock Text="2. Open Developer Options, Enable USB Debugging." FontSize="20" TextWrapping="Wrap" Margin="0 5"/>
+					<TextBlock Text="3. When you see a permission prompt regarding USB Debugging, Allow it." FontSize="20" TextWrapping="Wrap" Margin="0 5"/>
+
+				</StackPanel>
             </StackPanel>
         </TabViewItem>
     </TabView>

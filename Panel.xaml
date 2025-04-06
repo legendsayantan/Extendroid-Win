@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Extendroid.Panel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Extendroid"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:imaging="using:System.Windows.Media.Imaging"
+    mc:Ignorable="d"
+    Title="Extendroid Panel">
+
+    <ScrollViewer HorizontalScrollMode="Auto"
+              VerticalScrollMode="Auto"
+              HorizontalScrollBarVisibility="Auto"
+              VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="{StaticResource theme5}" Name="RootPanel" >
+            <Canvas Height="300" Width="Auto">
+                <Image Width="Auto" Height="300" Stretch="Uniform" Canvas.Left="-220" Canvas.Top="-100" Source="Assets/extendroid.png">
+                    
+                </Image>
+                <TextBlock Text="Extendroid" FontSize="46" FontWeight="Bold" Canvas.Left="160" Canvas.Top="37">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0.43,0" EndPoint="0.43,1">
+                            <GradientStop Color="{StaticResource theme1}" Offset="0" />
+                            <GradientStop Color="{StaticResource theme2}" Offset="0.25" />
+                            <GradientStop Color="{StaticResource theme3}" Offset="0.5" />
+                            <GradientStop Color="{StaticResource theme4}" Offset="0.75" />
+                            <GradientStop Color="{StaticResource theme5}" Offset="1" />
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock Text="Extend your android device, to other platforms" Foreground="{StaticResource theme1}" FontSize="18" Canvas.Top="100" Canvas.Left="40"/>
+                <TextBlock FontSize="16" Canvas.Top="135" Canvas.Left="40" Foreground="{StaticResource theme2}" FontWeight="Bold">
+                    
+                  
+    Made with ❤ by 
+    <Hyperlink NavigateUri="https://github.com/legendsayantan" Foreground="{StaticResource theme2}">
+        LegendSayantan
+    </Hyperlink>
+                </TextBlock>
+                <TextBlock FontSize="16" Canvas.Top="160" Canvas.Left="40" Foreground="{StaticResource theme2}">
+                
+              
+Licensed to GNU General Public License v3.0.
+<Hyperlink NavigateUri="https://github.com/legendsayantan/Extendroid-Win/blob/main/LICENSE" Foreground="{StaticResource theme2}">
+    Learn more
+</Hyperlink>
+                </TextBlock>
+                <TextBlock FontSize="16" Canvas.Top="190" Canvas.Left="40" Foreground="{StaticResource theme2}">
+                
+              
+Special Thanks to the project  
+<Hyperlink NavigateUri="https://github.com/Genymobile/scrcpy" Foreground="{StaticResource theme2}">
+    Scrcpy
+</Hyperlink> for help.
+                </TextBlock>
+            </Canvas>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Open Logs Folder" HorizontalAlignment="Center" Margin="10 0 0 0" Click="OnLogsClick"/>
+                <Button Grid.Column="1" Content="Kill ADB Server" HorizontalAlignment="Center" Margin="10 0 0 0" Click="OnKillAdbClick"/>
+                <Button Grid.Column="2" Content="Show Help for Shortcut Keys" HorizontalAlignment="Center" Margin="10 0 0 0" Click="OnShortcutClick"/>
+            </Grid>
+            <TextBlock x:Name="Output" FontSize="18" Foreground="{StaticResource theme1}" TextWrapping="Wrap" Margin="10"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
