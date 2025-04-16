@@ -130,18 +130,28 @@
                                         </ItemsRepeater.Layout>
                                         <ItemsRepeater.ItemTemplate>
                                             <DataTemplate x:DataType="localLib:NotificationRecord">
-                                                <Border Margin="3" Padding="7 5 5 5" BorderBrush="{StaticResource theme3}" BorderThickness="1" CornerRadius="5">
+                                                <Border Margin="3 3 3 0" BorderBrush="{StaticResource theme3}" BorderThickness="1" CornerRadius="5">
                                                     <StackPanel VerticalAlignment="Center">
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock Grid.Column="0" Text="{x:Bind appName}" FontSize="10" Foreground="{StaticResource theme2}" TextWrapping="Wrap"/>
-                                                            <TextBlock Grid.Column="1" Text="{x:Bind FormattedTime}" FontSize="10" Foreground="{StaticResource theme2}"/>
-                                                        </Grid>
-                                                        <TextBlock Text="{x:Bind title}" FontSize="14" Foreground="{StaticResource theme1}" TextWrapping="Wrap" MaxWidth="300"/>
-                                                        <TextBlock Text="{x:Bind text_val}" FontSize="12" Foreground="{StaticResource theme2}" TextWrapping="Wrap" MaxWidth="300"/>
+                                                        <StackPanel Margin="7 5 5 3">
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{x:Bind appName}" FontSize="10" Foreground="{StaticResource theme2}" TextWrapping="Wrap"/>
+                                                                <TextBlock Grid.Column="1" Text="{x:Bind FormattedTime}" FontSize="10" Foreground="{StaticResource theme2}"/>
+                                                            </Grid>
+                                                            <TextBlock Text="{x:Bind title}" Visibility="{x:Bind titleVisibility, Mode=OneWay}" FontSize="14" Foreground="{StaticResource theme1}" TextWrapping="Wrap" MaxWidth="300"/>
+                                                            <TextBlock Text="{x:Bind text_val}" Visibility="{x:Bind textVisibility, Mode=OneWay}" FontSize="12" Foreground="{StaticResource theme2}" TextWrapping="Wrap" MaxWidth="300"/>
+                                                        </StackPanel>
+                                                        <ProgressBar
+                                                            HorizontalAlignment="Stretch"
+                                                            Foreground="{StaticResource theme3}"
+                                                            Background="Transparent"
+                                                            Minimum="0" Maximum="{x:Bind progressMaxValue}"
+                                                            Value="{x:Bind progressValue, Mode=OneWay}"
+                                                            Visibility="{x:Bind progressVisibility, Mode=OneWay}">
+                                                        </ProgressBar>
                                                     </StackPanel>
                                                 </Border>
                                             </DataTemplate>

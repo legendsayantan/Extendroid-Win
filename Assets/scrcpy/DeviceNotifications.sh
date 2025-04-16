@@ -6,13 +6,14 @@ dumpsys notification --noredact | sed -n '/Notification List:/,/Snoozed notifica
     first = 1;
     print "["
 }
+
 # Function: extract_value(record, field, mode)
 #   - record: full text in which to search.
 #   - field: the token, e.g. "opPkg"
 #   - mode: if set to "paren" then assume format like:
 #           android.title=String (Tap to control SoundMaster)
 #         and extract the string inside parentheses.
-function extract_value(record, field, mode,    pos, val, paren_start, paren_end, arr) {
+function extract_value(record, field, mode,    pos, val, paren_start, paren_end, arr, i, c) {
     pos = index(record, field"=");
     if (pos == 0) return "";
     # Extract everything after "field="
@@ -23,24 +24,24 @@ function extract_value(record, field, mode,    pos, val, paren_start, paren_end,
        if (paren_start > 0) {
            val = substr(val, paren_start+1);
            paren_end = index(val, ")");
+           if(substr(val, paren_end+1, 1)==")")
+               paren_end = paren_end+1
            if (paren_end > 0)
-               return substr(val, 1, paren_end-1);
-           else
-               return val;
-       } else {
-           return val;
+               val = substr(val, 1, paren_end-1);
        }
     } else {
        # Remove newline characters to get a single-line token.
        gsub(/\n/, " ", val);
        split(val, arr, " ");
-       return arr[1];
+       val = arr[1];
     }
+    gsub(/\\/, "\\\\", val);
+    gsub(/"/, "\\\"", val);
+    return val;
 }
 {
     if (NR > 1) {
       opPkg = extract_value($0, "opPkg");
-      icon = extract_value($0, "icon");
       key = extract_value($0, "key");
       when_val = extract_value($0, "when");
       title = extract_value($0, "android.title", "paren");
@@ -55,8 +56,8 @@ function extract_value(record, field, mode,    pos, val, paren_start, paren_end,
       first = 0;
       
       # Print JSON object for the current record.
-      printf("{\"opPkg\":\"%s\",\"icon\":\"%s\",\"key\":\"%s\",\"when\":\"%s\",\"android.title\":\"%s\",\"android.subText\":\"%s\",\"android.text\":\"%s\",\"android.progress\":\"%s\",\"android.progressMax\":\"%s\"}",
-             opPkg, icon, key, when_val, title, subText, text_val, progress, progressMax);
+      printf("{\"opPkg\":\"%s\",\"key\":\"%s\",\"when\":\"%s\",\"android.title\":\"%s\",\"android.subText\":\"%s\",\"android.text\":\"%s\",\"android.progress\":\"%s\",\"android.progressMax\":\"%s\"}",
+             opPkg, key, when_val, title, subText, text_val, progress, progressMax);
     }
 }
 END { print "]" }'

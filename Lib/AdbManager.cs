@@ -18,7 +18,7 @@ using System.Diagnostics;
 using AdvancedSharpAdbClient.DeviceCommands;
 using AdvancedSharpAdbClient.Receivers;
 using System.Text.Json.Serialization;
-using static System.Windows.Forms.Design.AxImporter;
+using Microsoft.UI.Xaml;
 namespace Extendroid.Lib
 {
     internal class AdbManager
@@ -278,10 +278,10 @@ namespace Extendroid.Lib
                 //send the content as input to the process
                 adbClient.ExecuteShellCommand(device, shellFileContent, outputReceiver);
 
-                outputReceiver.ToString();
+                string data = outputReceiver.ToString();
 
                 //deserialise
-                notifications = JsonSerializer.Deserialize<List<NotificationRecord>>(outputReceiver.ToString());
+                notifications = JsonSerializer.Deserialize<List<NotificationRecord>>(data);
             }));
             t.Start();
             t.Join();
@@ -314,7 +314,7 @@ namespace Extendroid.Lib
             {
                 
 
-                if ((!when_val.Trim().Equals("0")) && long.TryParse(when_val, out long unixMilliseconds))
+                if (long.TryParse(when_val, out long unixMilliseconds) && unixMilliseconds!=0)
                 {
                     // Convert Unix milliseconds to DateTimes
                     DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(unixMilliseconds).ToLocalTime().DateTime;
@@ -322,6 +322,53 @@ namespace Extendroid.Lib
                     return dateTime.ToString($"{DateAndMonth}HH:mm");
                 }
                 return string.Empty;
+            }
+        }
+
+        public Visibility titleVisibility
+        {
+            get
+            {
+                return (!title.Trim().Equals(string.Empty)) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public Visibility textVisibility
+        {
+            get
+            {
+                return (!text_val.Trim().Equals(string.Empty)) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public double progressValue
+        {
+            get
+            {
+                if (double.TryParse(progress, out double value))
+                {
+                    return value;
+                }
+                return 0;
+            }
+        }
+
+        public double progressMaxValue
+        {
+            get
+            {
+                if (double.TryParse(progressMax, out double value))
+                {
+                    return value;
+                }
+                return 0;
+            }
+        }
+
+        public Visibility progressVisibility
+        {
+            get {
+                return (progressMaxValue != 0.0)? Visibility.Visible : Visibility.Collapsed;
             }
         }
     }

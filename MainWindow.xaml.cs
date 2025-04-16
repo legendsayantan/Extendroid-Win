@@ -423,6 +423,7 @@ namespace Extendroid
             {
                 var data = AdbManager.getNotifications(device).OrderByDescending(x=>x.when_val)
                     .GroupBy(x => new { x.opPkg,x.text_val,x.title }).Select(group => group.First()).ToList();
+                data.RemoveAll(x => (x.title + x.text_val).Trim().Equals(string.Empty));
                 foreach (var item in data)
                 {
                     AppItem? app = installedApps.Concat(systemApps).ToList().Find(a => a.ID == item.opPkg);
