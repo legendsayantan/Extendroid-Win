@@ -13,9 +13,12 @@ using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
 using Image = Microsoft.UI.Xaml.Controls.Image;
 using Windows.Storage;
-using System.Diagnostics.Eventing.Reader;
-using System.Windows.Media;
+using System.Text.Json;
 using System.Diagnostics;
+using AdvancedSharpAdbClient.DeviceCommands;
+using AdvancedSharpAdbClient.Receivers;
+using System.Text.Json.Serialization;
+using static System.Windows.Forms.Design.AxImporter;
 namespace Extendroid.Lib
 {
     internal class AdbManager
@@ -127,10 +130,10 @@ namespace Extendroid.Lib
                             //run adb.exe pair ip:port code
                             ProcessStartInfo psi = new ProcessStartInfo
                             {
-                                FileName = "adb.exe",
+                                FileName = Path.Combine(adbFolder.Path,"adb.exe"),
                                 Arguments = $"pair {ip}:{port} {Code}",
-                                UseShellExecute = false, 
-                                CreateNoWindow = true, 
+                                UseShellExecute = false,
+                                CreateNoWindow = true,
                                 WorkingDirectory = adbFolder.Path
                             };
                             Process p = Process.Start(psi);
@@ -178,11 +181,12 @@ namespace Extendroid.Lib
                 {
                     foreach (var port in availablePorts)
                     {
-                        tryConnectTo(IP, port, () => {
+                        tryConnectTo(IP, port, () =>
+                        {
                             //cancellationTokenSource.Cancel(); //lags out
                             running = false;
                         });
-                        if(!running) break;
+                        if (!running) break;
                     }
                     await Task.Delay(3000);
                 }
@@ -191,7 +195,7 @@ namespace Extendroid.Lib
 
         }
 
-        public static void tryConnectTo(string IP, int port,Action OnSuccess)
+        public static void tryConnectTo(string IP, int port, Action OnSuccess)
         {
             StateCallback.Invoke($"Connecting with \n{IP}:{port}");
             var output = adbClient.Connect(IP, port);
@@ -260,6 +264,65 @@ namespace Extendroid.Lib
             };
 
             Process.Start(psi);
+        }
+
+        public static List<NotificationRecord> getNotifications(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            List<NotificationRecord> notifications = new List<NotificationRecord>();
+            Thread t = new Thread(new ThreadStart(() =>
+            {
+                ConsoleOutputReceiver outputReceiver = new ConsoleOutputReceiver();
+                string shellFilePath = Path.Combine(adbFolder.Path, "DeviceNotifications.sh");
+                //read the file
+                string shellFileContent = File.ReadAllText(shellFilePath);
+                //send the content as input to the process
+                adbClient.ExecuteShellCommand(device, shellFileContent, outputReceiver);
+
+                outputReceiver.ToString();
+
+                //deserialise
+                notifications = JsonSerializer.Deserialize<List<NotificationRecord>>(outputReceiver.ToString());
+            }));
+            t.Start();
+            t.Join();
+            return notifications;
+        }
+    }
+    public class NotificationRecord
+    {
+        //opPkg, icon, key, when_val, title, subText, text_val, progress, progressMax
+        public string opPkg{ get; set; }
+        public string appName{ get; set; }
+        public string key { get; set; }
+        [JsonPropertyName("when")]
+        public string when_val { get; set; }
+        [JsonPropertyName("android.title")]
+        public string title { get; set; }
+        [JsonPropertyName("android.subText")]
+        public string subText { get; set; }
+        [JsonPropertyName("android.text")]
+        public string text_val { get; set; }
+        [JsonPropertyName("android.progress")]
+        public string progress { get; set; }
+        [JsonPropertyName("android.progressMax")]
+        public string progressMax { get; set; }
+
+        // Computed property to get formatted time
+        public string FormattedTime
+        {
+            get
+            {
+                
+
+                if ((!when_val.Trim().Equals("0")) && long.TryParse(when_val, out long unixMilliseconds))
+                {
+                    // Convert Unix milliseconds to DateTimes
+                    DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(unixMilliseconds).ToLocalTime().DateTime;
+                    string DateAndMonth = DateTime.Now.ToString("ddd").Equals(dateTime.ToString("ddd"))? string.Empty : dateTime.ToString("dd MMM ");
+                    return dateTime.ToString($"{DateAndMonth}HH:mm");
+                }
+                return string.Empty;
+            }
         }
     }
 }

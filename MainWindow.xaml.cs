@@ -417,6 +417,23 @@ namespace Extendroid
             }
         }
 
+        private void OnNotiBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                var data = AdbManager.getNotifications(device).OrderByDescending(x=>x.when_val)
+                    .GroupBy(x => new { x.opPkg,x.text_val,x.title }).Select(group => group.First()).ToList();
+                foreach (var item in data)
+                {
+                    AppItem? app = installedApps.Concat(systemApps).ToList().Find(a => a.ID == item.opPkg);
+                    item.appName = app==null ? item.opPkg : app.Name;
+                }
+                NotiList.ItemsSource = null;
+                NotiList.ItemsSource = data;
+
+            }
+        }
+
         private void OnActiveGridItemClick(object sender, PointerRoutedEventArgs e)
         {
             

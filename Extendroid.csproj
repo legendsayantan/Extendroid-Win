@@ -64,6 +64,7 @@
     <Content Remove="Assets\Square44x44Logo.targetsize-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\scrcpy\DeviceNotifications.sh" />
     <None Remove="Assets\Unlock.png" />
     <None Remove="Assets\video_off.png" />
     <None Remove="ConnectNewDevice.xaml" />
@@ -115,10 +116,16 @@
     <Content Update="Assets\Lock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\noti.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\Other.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Restart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\scrcpy\DeviceNotifications.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\scrcpy\icon.png">
