@@ -35,6 +35,7 @@ namespace Extendroid.Lib
         static List<string> ConnectedIps = new List<string>();
         static List<int> availablePorts = new List<int>();
         static StorageFolder adbFolder;
+        static string scriptsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"Assets\", "remote-scripts");
 
         public static Action<string> StateCallback;
         public AdbManager()
@@ -130,7 +131,7 @@ namespace Extendroid.Lib
                             //run adb.exe pair ip:port code
                             ProcessStartInfo psi = new ProcessStartInfo
                             {
-                                FileName = Path.Combine(adbFolder.Path,"adb.exe"),
+                                FileName = Path.Combine(adbFolder.Path, "adb.exe"),
                                 Arguments = $"pair {ip}:{port} {Code}",
                                 UseShellExecute = false,
                                 CreateNoWindow = true,
@@ -173,6 +174,8 @@ namespace Extendroid.Lib
                 await PortScanner.StartScan(IP, 30000, 49151, OnPortFound, cancellationTokenSource.Token);
             }));
             thread.Start();
+            var DevicesBeforeConnect = adbClient.GetDevices();
+
             //schedule task every 3 seconds
             Thread connectionThread = new Thread(new ThreadStart(async () =>
             {
@@ -186,6 +189,10 @@ namespace Extendroid.Lib
                             //cancellationTokenSource.Cancel(); //lags out
                             running = false;
                         });
+                        if (adbClient.GetDevices().Any(d => !DevicesBeforeConnect.Contains(d)))
+                        {
+                            StateCallback.Invoke($"Connected.");
+                        }
                         if (!running) break;
                     }
                     await Task.Delay(3000);
@@ -266,26 +273,39 @@ namespace Extendroid.Lib
             Process.Start(psi);
         }
 
-        public static List<NotificationRecord> getNotifications(AdvancedSharpAdbClient.Models.DeviceData device)
+        public static async Task<List<NotificationRecord>> getNotifications(AdvancedSharpAdbClient.Models.DeviceData device)
         {
-            List<NotificationRecord> notifications = new List<NotificationRecord>();
-            Thread t = new Thread(new ThreadStart(() =>
+            return await Task.Run(() =>
             {
                 ConsoleOutputReceiver outputReceiver = new ConsoleOutputReceiver();
-                string shellFilePath = Path.Combine(adbFolder.Path, "DeviceNotifications.sh");
+                string shellFilePath = Path.Combine(scriptsFolder, "DeviceNotifications.sh");
                 //read the file
                 string shellFileContent = File.ReadAllText(shellFilePath);
                 //send the content as input to the process
                 adbClient.ExecuteShellCommand(device, shellFileContent, outputReceiver);
 
-                string data = outputReceiver.ToString();
+                string data = outputReceiver.ToString().Replace("ï»¿", "").Replace("\r\n", "");
 
                 //deserialise
-                notifications = JsonSerializer.Deserialize<List<NotificationRecord>>(data);
-            }));
-            t.Start();
-            t.Join();
-            return notifications;
+                return JsonSerializer.Deserialize<List<NotificationRecord>>(data) ?? new List<NotificationRecord>();
+            });
+        }
+
+        public static async Task<List<Sms>> getSms(AdvancedSharpAdbClient.Models.DeviceData device)
+        {
+            return await Task.Run(() =>
+            {
+                ConsoleOutputReceiver outputReceiver = new ConsoleOutputReceiver();
+                var smslimit = ApplicationData.Current.LocalSettings.Values["smslimit"] ?? 25;
+                string shellFilePath = Path.Combine(scriptsFolder, "DeviceSMS.sh");
+                //read the file
+                string shellFileContent = File.ReadAllText(shellFilePath);
+                //send the content as input to the process
+                adbClient.ExecuteShellCommand(device, $"smslimit={smslimit};{shellFileContent}", outputReceiver);
+                var data = outputReceiver.ToString().Replace("ï»¿", "").Replace("\r\n", "");
+                //deserialise
+                return JsonSerializer.Deserialize<List<Sms>>(data)??new List<Sms>();
+            });
         }
     }
     public class NotificationRecord
@@ -369,6 +389,26 @@ namespace Extendroid.Lib
         {
             get {
                 return (progressMaxValue != 0.0)? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+    }
+
+    public class Sms { 
+        public string address { get; set; }
+        public string date { get; set; }
+        public string body { get; set; }
+        public string FormattedTime
+        {
+            get
+            {
+                if (long.TryParse(date, out long unixMilliseconds) && unixMilliseconds != 0)
+                {
+                    // Convert Unix milliseconds to DateTimes
+                    DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(unixMilliseconds).ToLocalTime().DateTime;
+                    string DateAndMonth = DateTime.Now.ToString("ddd").Equals(dateTime.ToString("ddd")) ? string.Empty : dateTime.ToString("dd MMM ");
+                    return dateTime.ToString($"{DateAndMonth}HH:mm");
+                }
+                return string.Empty;
             }
         }
     }

@@ -77,6 +77,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Apps" Foreground="{StaticResource theme1}" FontSize="24" />
                     <Canvas Grid.Column="1" Width="60" Height="30" Margin="5 0 0 0">
@@ -123,7 +124,7 @@
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel>
-                                    <TextBlock Text="Notifications" Foreground="{StaticResource theme1}" FontSize="16" Margin="0 0 0 10"/>
+                                    <TextBlock x:Name="NotiHeader" Text="Notifications" Foreground="{StaticResource theme1}" FontSize="16" Margin="0 0 0 10"/>
                                     <ItemsRepeater x:Name="NotiList">
                                         <ItemsRepeater.Layout>
                                             <StackLayout Orientation="Vertical" />
@@ -138,11 +139,11 @@
                                                                     <ColumnDefinition Width="*" />
                                                                     <ColumnDefinition Width="Auto" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <TextBlock Grid.Column="0" Text="{x:Bind appName}" FontSize="10" Foreground="{StaticResource theme2}" TextWrapping="Wrap"/>
+                                                                <TextBlock Grid.Column="0" Text="{x:Bind appName}" FontSize="10" Foreground="{StaticResource theme2}" TextWrapping="Wrap" IsTextSelectionEnabled="True"/>
                                                                 <TextBlock Grid.Column="1" Text="{x:Bind FormattedTime}" FontSize="10" Foreground="{StaticResource theme2}"/>
                                                             </Grid>
-                                                            <TextBlock Text="{x:Bind title}" Visibility="{x:Bind titleVisibility, Mode=OneWay}" FontSize="14" Foreground="{StaticResource theme1}" TextWrapping="Wrap" MaxWidth="300"/>
-                                                            <TextBlock Text="{x:Bind text_val}" Visibility="{x:Bind textVisibility, Mode=OneWay}" FontSize="12" Foreground="{StaticResource theme2}" TextWrapping="Wrap" MaxWidth="300"/>
+                                                            <TextBlock Text="{x:Bind title}" Visibility="{x:Bind titleVisibility, Mode=OneWay}" FontSize="14" Foreground="{StaticResource theme1}" TextWrapping="Wrap" MaxWidth="300" IsTextSelectionEnabled="True"/>
+                                                            <TextBlock Text="{x:Bind text_val}" Visibility="{x:Bind textVisibility, Mode=OneWay}" FontSize="12" Foreground="{StaticResource theme2}" TextWrapping="Wrap" MaxWidth="300" IsTextSelectionEnabled="True"/>
                                                         </StackPanel>
                                                         <ProgressBar
                                                             HorizontalAlignment="Stretch"
@@ -161,10 +162,56 @@
                             </Flyout>
                         </Button.Flyout>
                     </Button>
-                    <Button Grid.Column="4" Margin="5 0 5 0" Click="OnReloadBtnClick" ToolTipService.ToolTip="Reload">
+                    <Button Grid.Column="4" Margin="5 0 5 0" Click="OnSmsBtnClick" ToolTipService.ToolTip="SMS inbox">
+                        <Image Source="Assets/sms.png" Width="22" Height="22" />
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel>
+                                    <Grid VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBox Width="0" Grid.Column="0" Grid.Row="0"/>
+                                        <TextBlock x:Name="SMSHeader" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="0" Text="SMS Inbox" Foreground="{StaticResource theme1}" FontSize="16" Margin="0 0 25 6"/>
+                                        <TextBlock VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="0" Text="Limit to" Foreground="{StaticResource theme1}" FontSize="12" Margin="0 0 4 8"/>
+                                        <TextBox VerticalAlignment="Bottom" Scale="0.8 0.8 0.8" Grid.Column="3" Grid.Row="0" x:Name="SmsLimit" Width="20" Text="{x:Bind SmsLimitValue, Mode=TwoWay}" Margin="0"/>
+                                    </Grid>
+                                    <ItemsRepeater x:Name="SMSList">
+                                        <ItemsRepeater.Layout>
+                                            <StackLayout Orientation="Vertical" />
+                                        </ItemsRepeater.Layout>
+                                        <ItemsRepeater.ItemTemplate>
+                                            <DataTemplate x:DataType="localLib:Sms">
+                                                <Border Margin="3 3 3 0" BorderBrush="{StaticResource theme3}" BorderThickness="1" CornerRadius="5">
+                                                    <StackPanel VerticalAlignment="Center" Margin="7 5 5 5">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="{x:Bind address}" FontSize="10" Foreground="{StaticResource theme2}" IsTextSelectionEnabled="True"  TextWrapping="Wrap"/>
+                                                            <TextBlock Grid.Column="1" Text="{x:Bind FormattedTime}" FontSize="10" Foreground="{StaticResource theme2}" IsTextSelectionEnabled="True"/>
+                                                        </Grid>
+                                                        <TextBlock Text="{x:Bind body}" FontSize="12" Foreground="{StaticResource theme1}" TextWrapping="Wrap" MaxWidth="300" IsTextSelectionEnabled="True"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsRepeater.ItemTemplate>
+                                    </ItemsRepeater>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Grid.Column="5" Margin="5 0 5 0" Click="OnReloadBtnClick" ToolTipService.ToolTip="Reload">
                         <Image Source="Assets/Sync.png" Width="22" Height="22" />
                     </Button>
-                    <Button Grid.Column="5" Margin="5 0 10 0" Click="OnPanelBtnClick" ToolTipService.ToolTip="Panel">
+                    <Button Grid.Column="6" Margin="5 0 10 0" Click="OnPanelBtnClick" ToolTipService.ToolTip="Panel">
                         <Image Source="Assets/Settings.png" Width="22" Height="22" />
                     </Button>
                 </Grid>

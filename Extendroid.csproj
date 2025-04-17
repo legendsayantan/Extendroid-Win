@@ -15,31 +15,21 @@
 
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="Assets\audio_off.png" />
     <Content Remove="Assets\BadgeLogo.scale-100.png" />
     <Content Remove="Assets\BadgeLogo.scale-125.png" />
     <Content Remove="Assets\BadgeLogo.scale-150.png" />
     <Content Remove="Assets\BadgeLogo.scale-200.png" />
     <Content Remove="Assets\BadgeLogo.scale-400.png" />
-    <Content Remove="Assets\controls_off.png" />
-    <Content Remove="Assets\disable_screen.png" />
-    <Content Remove="Assets\extendroid.png" />
     <Content Remove="Assets\ic_default.png" />
-    <Content Remove="Assets\keep_awake.png" />
-    <Content Remove="Assets\landscape.png" />
     <Content Remove="Assets\LargeTile.scale-100.png" />
     <Content Remove="Assets\LargeTile.scale-125.png" />
     <Content Remove="Assets\LargeTile.scale-150.png" />
     <Content Remove="Assets\LargeTile.scale-200.png" />
     <Content Remove="Assets\LargeTile.scale-400.png" />
-    <Content Remove="Assets\no_border.png" />
-    <Content Remove="Assets\on_background.png" />
-    <Content Remove="Assets\on_top.png" />
     <Content Remove="Assets\outline_2k_24.xml" />
     <Content Remove="Assets\outline_480.xml" />
     <Content Remove="Assets\outline_4k_24.xml" />
     <Content Remove="Assets\outline_hd_24.xml" />
-    <Content Remove="Assets\portrait.png" />
     <Content Remove="Assets\SplashScreen.scale-100.png" />
     <Content Remove="Assets\SplashScreen.scale-125.png" />
     <Content Remove="Assets\SplashScreen.scale-150.png" />
@@ -64,7 +54,19 @@
     <Content Remove="Assets\Square44x44Logo.targetsize-48.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\audio_off.png" />
+    <None Remove="Assets\controls_off.png" />
+    <None Remove="Assets\disable_screen.png" />
+    <None Remove="Assets\extendroid.png" />
+    <None Remove="Assets\keep_awake.png" />
+    <None Remove="Assets\landscape.png" />
+    <None Remove="Assets\no_border.png" />
+    <None Remove="Assets\on_background.png" />
+    <None Remove="Assets\on_top.png" />
+    <None Remove="Assets\portrait.png" />
+    <None Remove="Assets\remote-scripts\DeviceSms.sh" />
     <None Remove="Assets\scrcpy\DeviceNotifications.sh" />
+    <None Remove="Assets\sms.png" />
     <None Remove="Assets\Unlock.png" />
     <None Remove="Assets\video_off.png" />
     <None Remove="ConnectNewDevice.xaml" />
@@ -122,6 +124,12 @@
     <Content Update="Assets\Other.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\remote-scripts\DeviceNotifications.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\remote-scripts\DeviceSMS.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\Restart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -132,6 +140,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Settings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\sms.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Sync.png">
@@ -145,36 +156,36 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Assets\audio_off.png">
+    <Content Update="Assets\audio_off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\controls_off.png">
+    </Content>
+    <Content Update="Assets\controls_off.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\disable_screen.png">
+    </Content>
+    <Content Update="Assets\disable_screen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Update="Assets\ic_default.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\keep_awake.png">
+    <Content Update="Assets\keep_awake.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\landscape.png">
+    </Content>
+    <Content Update="Assets\landscape.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\no_border.png">
+    </Content>
+    <Content Update="Assets\no_border.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\on_background.png">
+    </Content>
+    <Content Update="Assets\on_background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\on_top.png">
+    </Content>
+    <Content Update="Assets\on_top.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\portrait.png">
+    </Content>
+    <Content Update="Assets\portrait.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Page Update="Panel.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

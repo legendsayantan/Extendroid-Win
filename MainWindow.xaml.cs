@@ -45,6 +45,16 @@ namespace Extendroid
         List<AppItem> installedApps = new List<AppItem>();
         List<AppItem> systemApps = new List<AppItem>();
         List<AppItem> windows = new List<AppItem>();
+        public string SmsLimitValue
+        {
+            get {
+                return ApplicationData.Current.LocalSettings.Values["smslimit"]?.ToString() ?? "25";
+            }
+            set
+            {
+                ApplicationData.Current.LocalSettings.Values["smslimit"] = value;
+            }
+        }
 
         public MainWindow()
         {
@@ -352,7 +362,7 @@ namespace Extendroid
         {
             Button button = (Button)sender;
             ConnectNewDevice connectNewDevice = new ConnectNewDevice(() => {
-                //RestartApp();
+                devices = AdbManager.adbClient.GetDevices().Where(d => d.State == AdvancedSharpAdbClient.Models.DeviceState.Online);
             });
             connectNewDevice.Activate();
         }
@@ -375,6 +385,9 @@ namespace Extendroid
                 await ReloadApps(device);
                 await ReloadActive(device);
                 ReloadBattery(device);
+
+                NotiList.ItemsSource = null;
+                SMSList.ItemsSource = null;
             }
         }
 
@@ -417,20 +430,59 @@ namespace Extendroid
             }
         }
 
-        private void OnNotiBtnClick(object sender, RoutedEventArgs e)
+        private async void OnNotiBtnClick(object sender, RoutedEventArgs e)
         {
             if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
             {
-                var data = AdbManager.getNotifications(device).OrderByDescending(x=>x.when_val)
-                    .GroupBy(x => new { x.opPkg,x.text_val,x.title }).Select(group => group.First()).ToList();
-                data.RemoveAll(x => (x.title + x.text_val).Trim().Equals(string.Empty));
-                foreach (var item in data)
+                NotiHeader.Text = "Notifications (loading...)";
+                // Run the notification retrieval and processing on a background thread
+                var data = await Task.Run(() =>
                 {
-                    AppItem? app = installedApps.Concat(systemApps).ToList().Find(a => a.ID == item.opPkg);
-                    item.appName = app==null ? item.opPkg : app.Name;
-                }
+                    var notifications = AdbManager.getNotifications(device).Result
+                        .OrderByDescending(x => x.when_val)
+                        .GroupBy(x => new { x.opPkg, x.text_val, x.title })
+                        .Select(group => group.First())
+                        .Where(x => !string.IsNullOrWhiteSpace(x.title + x.text_val))
+                        .Where(x => !(x.title.Trim().Equals("true") && x.text_val.Trim().Equals("0")))
+                        .ToList();
+
+                    // Map app names
+                    foreach (var item in notifications)
+                    {
+                        AppItem? app = installedApps.Concat(systemApps).ToList().Find(a => a.ID == item.opPkg);
+                        item.appName = app == null ? item.opPkg : app.Name;
+                    }
+
+                    return notifications;
+                });
+
+                // Update the UI on the main thread
                 NotiList.ItemsSource = null;
+                NotiHeader.Text = "Notifications";
                 NotiList.ItemsSource = data;
+            }
+        }
+
+
+        private async void OnSmsBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (ActiveDevice() is AdvancedSharpAdbClient.Models.DeviceData device)
+            {
+                SMSHeader.Text = "SMS Inbox (loading...)";
+                var data = await Task.Run(() =>
+                {
+                    var smsData = AdbManager.getSms(device).Result
+                        .OrderByDescending(x => x.date)
+                        .GroupBy(x => new { x.address, x.body })
+                        .Select(group => group.First())
+                        .Where(x => !string.IsNullOrWhiteSpace(x.body))
+                        .ToList();
+                    smsData.RemoveAll(x => (x.body).Trim().Equals(string.Empty));
+                    return smsData;
+                });
+                SMSList.ItemsSource = null;
+                SMSHeader.Text = "SMS Inbox";
+                SMSList.ItemsSource = data;
 
             }
         }
